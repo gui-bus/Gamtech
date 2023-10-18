@@ -6,6 +6,7 @@ import {
   Button,
   Input,
   Avatar,
+  Link,
 } from "@nextui-org/react";
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
 import { Separator } from "../ui/separator";
@@ -37,16 +38,18 @@ export default function Header() {
   };
 
   return (
-    <Navbar className="bg-white shadow-xl dark:border-b-1 dark:border-primary dark:bg-[#181717]">
+    <Navbar className="bg-white shadow-xl dark:bg-[#181717]">
       <NavbarContent as="div" justify="start">
-        <Image
-          src="/gamtech.png"
-          alt="Foxtech"
-          width={200}
-          height={50}
-          style={{ objectFit: "contain" }}
-          className="h-auto w-36"
-        />
+        <Link href="/">
+          <Image
+            src="/gamtech.png"
+            alt="Foxtech"
+            width={200}
+            height={50}
+            style={{ objectFit: "contain" }}
+            className="h-auto w-36"
+          />
+        </Link>
       </NavbarContent>
 
       <NavbarContent as="div" justify="end" className="flex items-center gap-4">

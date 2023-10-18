@@ -572,7 +572,7 @@ async function main() {
         ],
         basePrice: 4000,
         categoryId: speakersCategory.id,
-        discountPercentage: 35, // 10% discount
+        discountPercentage: 10, // 10% discount
       },
       {
         name: "Sony XB43 Extra Bass",

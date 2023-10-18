@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={montserrat.className}>
-      <body className="bg-gradient-to-b from-zinc-200 to-slate-300 dark:from-neutral-700 dark:to-zinc-700">
+      <body className="bg-gradient-to-b from-zinc-200 to-slate-300 dark:from-neutral-900 dark:to-zinc-900">
         <AuthProvider>
           <UIProvider>
             <ThemeProvider
