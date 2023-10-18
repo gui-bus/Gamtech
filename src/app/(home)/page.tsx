@@ -1,3 +1,4 @@
+import Categories from "@/components/home/categories";
 import Image from "next/image";
 
 export default function Home() {
@@ -22,6 +23,10 @@ export default function Home() {
         sizes="100vw"
         priority
       />
+
+      <div className="my-5">
+        <Categories />
+      </div>
     </main>
   );
 }
