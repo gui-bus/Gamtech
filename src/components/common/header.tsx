@@ -1,66 +1,158 @@
 "use client";
 import React from "react";
-import { Navbar, NavbarContent, Button, Input } from "@nextui-org/react";
+import {
+  Navbar,
+  NavbarContent,
+  Button,
+  Input,
+  Avatar,
+} from "@nextui-org/react";
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
 import { Separator } from "../ui/separator";
 import { HiMenu } from "react-icons/hi";
-import { HiShoppingCart, HiSun, HiMoon } from "react-icons/hi2";
+import { HiShoppingCart, HiSun, HiMoon, HiShoppingBag } from "react-icons/hi2";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { TbDiscount2, TbListSearch, TbHomeMove } from "react-icons/tb";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 import { useTheme } from "next-themes";
 
 import Image from "next/image";
-import ItemSearch from "./itemSearch";
 
-export default function App() {
+export default function Header() {
   const { setTheme, theme } = useTheme();
+
+  const { status, data } = useSession();
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
+  const handleLoginClick = async () => {
+    await signIn("google");
+  };
+
+  const handleLogoutClick = async () => {
+    await signOut();
+  };
+
   return (
     <Navbar className="bg-white p-2 shadow-xl dark:bg-[#181717]">
       <NavbarContent as="div" justify="start">
+        <Image
+          src="/logo.png"
+          alt="Foxtech"
+          width={200}
+          height={50}
+          style={{ objectFit: "contain" }}
+          className="h-auto w-36 md:w-44"
+        />
+      </NavbarContent>
+
+      <NavbarContent as="div" justify="end" className="flex items-center gap-4">
+        <Button
+          variant="light"
+          isIconOnly
+          startContent={<HiShoppingCart size={24} />}
+        />
+
         <Sheet>
           <SheetTrigger asChild>
-            <Button
-              variant="light"
-              isIconOnly
-              startContent={<HiMenu size={24} />}
-            />
+            {status === "unauthenticated" ? (
+              <Avatar
+                showFallback
+                src=""
+                isBordered
+                className="h-9 w-9 cursor-pointer text-large transition-all hover:scale-105"
+              />
+            ) : (
+              <Avatar
+                showFallback
+                src={data?.user?.image!}
+                isBordered
+                className="h-9 w-9 cursor-pointer text-large transition-all hover:scale-105"
+              />
+            )}
           </SheetTrigger>
 
-          <SheetContent side={"left"}>
+          <SheetContent side={"right"}>
             <SheetHeader>
-              <h1 className="mx-auto text-lg font-semibold mb-4">Menu</h1>
+              <h1 className="mx-auto mb-4 text-lg font-semibold">Menu</h1>
             </SheetHeader>
+
+            {status === "authenticated" && data?.user && (
+              <div className="mb-4 flex flex-col items-center justify-center gap-4 md:flex-row">
+                <Avatar
+                  showFallback
+                  src={data?.user?.image!}
+                  className="h-20 w-20 text-large"
+                ></Avatar>
+                <div className="flex flex-col items-center">
+                  <p className="text-lg font-semibold">{data?.user?.name}</p>
+                  <p className="text-tiny text-foreground-500">
+                    {data?.user?.email}
+                  </p>
+                </div>
+              </div>
+            )}
 
             {/* TODO Add search */}
             {/* <ItemSearch /> */}
 
             {/* Login & Theme toggle */}
-            <div className="flex w-full gap-2">
-              <Button
-                variant="shadow"
-                color="primary"
-                className="w-full"
-                endContent={<FiLogIn size={20} />}
-              >
-                Login
-              </Button>
-              <Button
-                variant="shadow"
-                endContent={
-                  theme === "dark" ? <HiSun size={20} /> : <HiMoon size={20} />
-                }
-                onClick={toggleTheme}
-                isIconOnly
-              />
+            <div className="flex flex-col gap-2">
+              <div className="flex w-full gap-2">
+                {status === "unauthenticated" ? (
+                  <Button
+                    variant="shadow"
+                    color="primary"
+                    className="w-full"
+                    endContent={<FiLogIn size={20} />}
+                    onClick={handleLoginClick}
+                  >
+                    Fazer Login
+                  </Button>
+                ) : (
+                  <Button
+                    variant="shadow"
+                    color="primary"
+                    className="w-full"
+                    endContent={<FiLogOut size={20} />}
+                    onClick={handleLogoutClick}
+                  >
+                    Fazer Logout
+                  </Button>
+                )}
+                <Button
+                  variant="shadow"
+                  endContent={
+                    theme === "dark" ? (
+                      <HiSun size={20} />
+                    ) : (
+                      <HiMoon size={20} />
+                    )
+                  }
+                  onClick={toggleTheme}
+                  isIconOnly
+                />
+              </div>
+
+              {status === "authenticated" && data.user && (
+                <Button
+                  color="default"
+                  className="w-full"
+                  endContent={<HiShoppingBag size={20} />}
+                >
+                  Meus pedidos
+                </Button>
+              )}
             </div>
 
             <Separator className="my-4" />
+
+            <h1 className="mx-auto mb-4 flex justify-center text-lg font-semibold">
+              Descubra
+            </h1>
 
             <div className="flex flex-col items-center justify-center gap-2">
               <Button
@@ -89,25 +181,6 @@ export default function App() {
             </div>
           </SheetContent>
         </Sheet>
-      </NavbarContent>
-
-      <NavbarContent as="div" justify="center">
-        <Image
-          src="/logo.png"
-          alt="Foxtech"
-          width={200}
-          height={50}
-          style={{ objectFit: "contain" }}
-          className="h-auto w-36 md:w-44"
-        />
-      </NavbarContent>
-
-      <NavbarContent as="div" justify="end">
-        <Button
-          variant="light"
-          isIconOnly
-          startContent={<HiShoppingCart size={24} />}
-        />
       </NavbarContent>
     </Navbar>
   );
