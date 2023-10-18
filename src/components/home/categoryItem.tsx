@@ -18,7 +18,7 @@ const CategoryItem = ({ category }: CategoryItemProps) => {
     mouses: <BsMouse3 size={20} />,
   };
   return (
-    <div className="flex w-44 items-center justify-center gap-2 rounded-md p-2 bg-white dark:bg-foreground-900 dark:text-black md:p-3">
+    <div className="flex w-44 cursor-pointer items-center justify-center gap-2 rounded-md bg-white p-2 drop-shadow-lg transition-all hover:bg-white/40 dark:bg-foreground dark:text-black hover:dark:bg-foreground-900/70 md:p-3">
       {categoryIcon[category.slug as keyof typeof categoryIcon]}
       <p className="text-sm font-medium">{category.name}</p>
     </div>
