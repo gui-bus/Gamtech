@@ -13,7 +13,7 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Gamtech | Elevando sua experiência tecnológica!",
   description:
-    "Na Gamtech, somos apaixonados por eletrônicos voltados para gamers. Oferecemos uma ampla seleção de consoles, controles, jogos, acessórios e muito mais, tudo para aprimorar sua jornada no mundo dos jogos. Explore nossa loja online e mergulhe em um universo de entretenimento eletrônico de alta qualidade.",
+    "Na Gamtech, somos apaixonados por eletrônicos. Oferecemos uma ampla seleção de items para computadores, tudo para aprimorar sua jornada tecnológica. Explore nossa loja online e mergulhe em um universo de entretenimento eletrônico de alta qualidade.",
 };
 
 export default function RootLayout({
