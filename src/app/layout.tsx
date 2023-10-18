@@ -3,7 +3,9 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
+
 import Header from "@/components/common/header";
+import UIProvider from "@/providers/uiprovider";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -19,17 +21,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
-      <body className={montserrat.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          {children}
-        </ThemeProvider>
+    <html lang="pt-BR" className={montserrat.className}>
+      <body className="bg-gradient-to-b from-zinc-200 to-slate-300 dark:from-neutral-700 dark:to-zinc-700">
+        <UIProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            {children}
+          </ThemeProvider>
+        </UIProvider>
       </body>
     </html>
   );
