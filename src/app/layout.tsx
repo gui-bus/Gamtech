@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 import Header from "@/components/common/header";
 import UIProvider from "@/providers/uiprovider";
+import { AuthProvider } from "@/providers/auth";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -23,17 +24,19 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={montserrat.className}>
       <body className="bg-gradient-to-b from-zinc-200 to-slate-300 dark:from-neutral-700 dark:to-zinc-700">
-        <UIProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Header />
-            {children}
-          </ThemeProvider>
-        </UIProvider>
+        <AuthProvider>
+          <UIProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Header />
+              {children}
+            </ThemeProvider>
+          </UIProvider>
+        </AuthProvider>
       </body>
     </html>
   );
