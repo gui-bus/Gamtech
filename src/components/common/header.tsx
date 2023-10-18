@@ -37,15 +37,15 @@ export default function Header() {
   };
 
   return (
-    <Navbar className="bg-white p-2 shadow-xl dark:bg-[#181717]">
+    <Navbar className="bg-white shadow-xl dark:border-b-1 dark:border-primary dark:bg-[#181717]">
       <NavbarContent as="div" justify="start">
         <Image
-          src="/logo.png"
+          src="/gamtech.png"
           alt="Foxtech"
           width={200}
           height={50}
           style={{ objectFit: "contain" }}
-          className="h-auto w-36 md:w-44"
+          className="h-auto w-36"
         />
       </NavbarContent>
 
@@ -63,6 +63,7 @@ export default function Header() {
                 showFallback
                 src=""
                 isBordered
+                color="primary"
                 className="h-9 w-9 cursor-pointer text-large transition-all hover:scale-105"
               />
             ) : (
@@ -70,6 +71,7 @@ export default function Header() {
                 showFallback
                 src={data?.user?.image!}
                 isBordered
+                color="primary"
                 className="h-9 w-9 cursor-pointer text-large transition-all hover:scale-105"
               />
             )}
@@ -77,7 +79,7 @@ export default function Header() {
 
           <SheetContent side={"right"}>
             <SheetHeader>
-              <h1 className="mx-auto mb-4 text-lg font-semibold">Menu</h1>
+              <h1 className="mx-auto mb-4 text-lg font-semibold">Dashboard</h1>
             </SheetHeader>
 
             {status === "authenticated" && data?.user && (
