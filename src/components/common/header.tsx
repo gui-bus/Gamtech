@@ -1,16 +1,8 @@
 "use client";
 import React from "react";
-import {
-  Navbar,
-  NavbarContent,
-  Button,
-  Input,
-  Avatar,
-  Link,
-} from "@nextui-org/react";
+import { Navbar, NavbarContent, Button, Avatar, Link } from "@nextui-org/react";
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
 import { Separator } from "../ui/separator";
-import { HiMenu } from "react-icons/hi";
 import { HiShoppingCart, HiSun, HiMoon, HiShoppingBag } from "react-icons/hi2";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { TbDiscount2, TbListSearch, TbHomeMove } from "react-icons/tb";
@@ -109,9 +101,9 @@ export default function Header() {
               <div className="flex w-full gap-2">
                 {status === "unauthenticated" ? (
                   <Button
-                    variant="shadow"
+                    variant="solid"
                     color="primary"
-                    className="w-full"
+                    className="w-full transition-all hover:bg-[#1267dc]/70"
                     endContent={<FiLogIn size={20} />}
                     onClick={handleLoginClick}
                   >
@@ -119,9 +111,9 @@ export default function Header() {
                   </Button>
                 ) : (
                   <Button
-                    variant="shadow"
+                    variant="solid"
                     color="primary"
-                    className="w-full"
+                    className="w-full transition-all hover:bg-[#1267dc]/70"
                     endContent={<FiLogOut size={20} />}
                     onClick={handleLogoutClick}
                   >
@@ -129,7 +121,8 @@ export default function Header() {
                   </Button>
                 )}
                 <Button
-                  variant="shadow"
+                  variant="solid"
+                  className="hoverButton"
                   endContent={
                     theme === "dark" ? (
                       <HiSun size={20} />
@@ -145,7 +138,7 @@ export default function Header() {
               {status === "authenticated" && data.user && (
                 <Button
                   color="default"
-                  className="w-full"
+                  className="hoverButton w-full"
                   endContent={<HiShoppingBag size={20} />}
                 >
                   Meus pedidos
@@ -162,7 +155,7 @@ export default function Header() {
             <div className="flex flex-col items-center justify-center gap-2">
               <Button
                 color="default"
-                className="w-full"
+                className="hoverButton w-full"
                 endContent={<TbHomeMove size={20} />}
               >
                 Página inicial
@@ -170,7 +163,7 @@ export default function Header() {
 
               <Button
                 color="default"
-                className="w-full"
+                className="hoverButton w-full"
                 endContent={<TbDiscount2 size={20} />}
               >
                 Promoções
@@ -178,7 +171,7 @@ export default function Header() {
 
               <Button
                 color="default"
-                className="w-full"
+                className="hoverButton w-full"
                 endContent={<TbListSearch size={20} />}
               >
                 Catálogo
