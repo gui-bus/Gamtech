@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={montserrat.className}>
-        <div className="flex min-h-screen flex-col bg-gradient-to-b from-zinc-200 to-slate-300 dark:from-neutral-900 dark:to-zinc-900">
+        <div className="flex min-h-screen flex-col bg-gradient-to-t from-foreground/30 to-foreground/10 dark:from-neutral-900 dark:to-zinc-900">
           <AuthProvider>
             <UIProvider>
               <ThemeProvider
