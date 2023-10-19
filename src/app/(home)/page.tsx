@@ -1,5 +1,4 @@
 import Categories from "@/components/home/categories";
-import DesktopProductList from "@/components/home/desktopProductList";
 import ProductList from "@/components/home/productList";
 import { prismaClient } from "@/lib/prisma";
 import Image from "next/image";
