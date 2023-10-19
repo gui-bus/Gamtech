@@ -1,7 +1,18 @@
 import Categories from "@/components/home/categories";
+import ProductList from "@/components/home/productList";
+import { Separator } from "@/components/ui/separator";
+import { prismaClient } from "@/lib/prisma";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const deals = await prismaClient.product.findMany({
+    where: {
+      discountPercentage: {
+        gt: 0,
+      },
+    },
+  });
+
   return (
     <main>
       <Image
@@ -24,9 +35,18 @@ export default function Home() {
         priority
       />
 
-      <div className="my-5">
+      <section className="mt-5">
         <Categories />
-      </div>
+      </section>
+
+      <section className="my-5">
+        <div className="mb-5 flex flex-col items-center justify-center px-5 text-center">
+          <h1 className="text-2xl font-semibold">Confira as ofertas</h1>
+          <p>Aqui estão as ofertas incríveis que temos para você. Não perca!</p>
+        </div>
+
+        <ProductList products={deals} />
+      </section>
     </main>
   );
 }
