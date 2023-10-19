@@ -22,21 +22,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={montserrat.className}>
-      <body className="bg-gradient-to-b from-zinc-200 to-slate-300 dark:from-neutral-900 dark:to-zinc-900">
-        <AuthProvider>
-          <UIProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <Header />
-              {children}
-            </ThemeProvider>
-          </UIProvider>
-        </AuthProvider>
+    <html lang="pt-BR">
+      <body className={montserrat.className}>
+        <div className="flex min-h-screen flex-col bg-gradient-to-b from-zinc-200 to-slate-300 dark:from-neutral-900 dark:to-zinc-900">
+          <AuthProvider>
+            <UIProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                <Header />
+                <main className="flex-grow">{children}</main>
+              </ThemeProvider>
+            </UIProvider>
+          </AuthProvider>
+        </div>
       </body>
     </html>
   );
