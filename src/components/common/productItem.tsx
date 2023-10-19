@@ -25,7 +25,6 @@ const ProductItem = ({ product }: ProductItemProps) => {
           <Chip
             className="absolute left-2 top-2"
             variant="solid"
-            color="primary"
             size="sm"
             startContent={<BsArrowDownShort size={20} />}
           >
@@ -44,9 +43,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
           {product.discountPercentage > 0 ? (
             <>
               <p className="text-xs font-bold">
-                {(
-                  Number(product.basePrice) - product.totalPrice
-                ).toLocaleString("pt-BR", {
+                {product.totalPrice.toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 })}
