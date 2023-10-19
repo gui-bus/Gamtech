@@ -50,6 +50,8 @@ export default async function Home() {
   const mouses = await fetchProductsByCategory("mouses");
   const monitors = await fetchProductsByCategory("monitors");
   const speakers = await fetchProductsByCategory("speakers");
+  const keyboards = await fetchProductsByCategory("keyboards");
+  const mousepads = await fetchProductsByCategory("mousepads");
   const headphonesAndMouses = await fetchProductsByCategories([
     "headphones",
     "mouses",
@@ -57,6 +59,10 @@ export default async function Home() {
   const monitorsAndSpeakers = await fetchProductsByCategories([
     "monitors",
     "speakers",
+  ]);
+  const keyboardsAndMousepads = await fetchProductsByCategories([
+    "keyboards",
+    "mousepads",
   ]);
 
   return (
@@ -132,7 +138,7 @@ export default async function Home() {
       {/* Desktop product list 01 - Headphones + Mouses */}
       <section className="my-5 hidden md:block">
         <p className="mb-4 flex items-center justify-center px-5 text-center text-lg font-medium">
-          Potencialize sua jornada digital com os melhores acessórios
+          Potencialize sua jornada digital com os melhores acessórios.
         </p>
 
         <ProductList products={headphonesAndMouses} />
@@ -173,7 +179,41 @@ export default async function Home() {
         <ProductList products={monitorsAndSpeakers} />
       </section>
 
-      {/* Desktop Banner 03 -  Delivery */}
+      {/* Desktop banner 03 - Keyboards + Mousepads */}
+      <div className="hidden md:block">
+        <div className="mx-auto my-5 flex w-full items-center justify-center gap-3 px-5">
+          <Image
+            src="/banner-keyboards.png"
+            alt="Até 25% de desconto em teclados"
+            width={0}
+            height={0}
+            className="h-auto w-full max-w-[50%] rounded-2xl"
+            sizes="100vw"
+            priority
+          />
+
+          <Image
+            src="/banner-mousepads.png"
+            alt="Até 15% de desconto em mousepads"
+            width={0}
+            height={0}
+            className="h-auto  w-full max-w-[50%] rounded-2xl"
+            sizes="100vw"
+            priority
+          />
+        </div>
+      </div>
+
+      {/* Desktop product list 03 - Keyboards + Mousepads */}
+      <section className="my-5 hidden md:block">
+        <p className="mb-4 flex items-center justify-center px-5 text-center text-lg font-medium">
+          Encontre a combinação ideal para aprimorar o seu setup.
+        </p>
+
+        <ProductList products={keyboardsAndMousepads} />
+      </section>
+
+      {/* Desktop Banner 04 -  Delivery */}
       <div className="hidden md:block">
         <div className="mt-5 w-full">
           <Image
@@ -272,7 +312,49 @@ export default async function Home() {
         <ProductList products={monitors} />
       </section>
 
-      {/* Mobile banner 05 - Delivery */}
+      {/* Mobile banner 05 - Keyboards */}
+      <div className="md:hidden">
+        <div className="my-5 flex w-full gap-2">
+          <Image
+            src="/banner-keyboards.png"
+            alt="Até 25% de desconto em teclados"
+            width={0}
+            height={0}
+            className="h-auto w-full object-cover"
+            sizes="100vw"
+            priority
+          />
+        </div>
+      </div>
+
+      {/* Mobile product list 05 - Keyboards */}
+      <section className="my-5 md:hidden">
+        <h2 className="mb-2 pl-5 text-lg font-semibold">Teclados</h2>
+        <ProductList products={keyboards} />
+      </section>
+
+      {/* Mobile banner 06 - Mousepads */}
+      <div className="md:hidden">
+        <div className="my-5 flex w-full gap-2">
+          <Image
+            src="/banner-mousepads.png"
+            alt="Até 15% de desconto em mousepads"
+            width={0}
+            height={0}
+            className="h-auto w-full object-cover"
+            sizes="100vw"
+            priority
+          />
+        </div>
+      </div>
+
+      {/* Mobile product list 06 - Mousepads */}
+      <section className="my-5 md:hidden">
+        <h2 className="mb-2 pl-5 text-lg font-semibold">Mousepads</h2>
+        <ProductList products={mousepads} />
+      </section>
+
+      {/* Mobile banner 07 - Delivery */}
       <div className="md:hidden">
         <div className="mt-5 flex w-full gap-2">
           <Image
