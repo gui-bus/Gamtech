@@ -11,7 +11,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
   return (
     <div className="flex max-w-[160px] flex-col gap-4">
       {/* Image */}
-      <div className="relative flex h-40 w-40 items-center justify-center rounded-lg bg-zinc-200 dark:bg-neutral-800">
+      <div className="relative flex h-40 w-40 items-center justify-center rounded-lg bg-white/80 dark:bg-neutral-800">
         <Image
           src={product.imageUrls[0]}
           alt={product.name}
@@ -56,7 +56,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
               </p>
             </>
           ) : (
-            <p className="text-xs line-through opacity-75">
+            <p className="text-xs font-bold">
               {Number(product.basePrice).toLocaleString("pt-BR", {
                 style: "currency",
                 currency: "BRL",
