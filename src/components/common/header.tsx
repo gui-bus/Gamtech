@@ -184,7 +184,7 @@ export default function Header() {
                 </Button>
               </Link>
 
-              <Link href="/catalog" className="w-full">
+              <Link href="/categories" className="w-full">
                 <Button
                   color="default"
                   endContent={<TbCategory2 size={20} />}
