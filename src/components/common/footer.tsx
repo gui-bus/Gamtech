@@ -71,7 +71,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="mx-auto w-full cursor-default items-center justify-center bg-white pt-8 shadow-xl dark:bg-[#181717] md:px-0">
+    <footer className="mx-auto w-full cursor-default items-center justify-center bg-white pt-8 shadow-xl dark:bg-[#181717] md:px-0 dark:border-t dark:border-gamtech">
       <section className="flex flex-col items-center justify-around gap-y-4 px-4 pb-8 shadow-xl md:flex-row md:gap-y-0">
         <Link href="/">
           <Image
