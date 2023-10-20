@@ -1,6 +1,13 @@
 "use client";
 import React from "react";
-import { Navbar, NavbarContent, Button, Avatar, Link } from "@nextui-org/react";
+import {
+  Navbar,
+  NavbarContent,
+  Button,
+  Avatar,
+  Link,
+  Spinner,
+} from "@nextui-org/react";
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
 import { Separator } from "../ui/separator";
 import { HiShoppingCart, HiSun, HiMoon, HiShoppingBag } from "react-icons/hi2";
@@ -52,25 +59,29 @@ export default function Header() {
         />
 
         <Sheet>
-          <SheetTrigger asChild>
-            {status === "unauthenticated" ? (
-              <Avatar
-                showFallback
-                src=""
-                isBordered
-                color="primary"
-                className="h-9 w-9 cursor-pointer text-large transition-all hover:scale-105"
-              />
-            ) : (
-              <Avatar
-                showFallback
-                src={data?.user?.image!}
-                isBordered
-                color="primary"
-                className="h-9 w-9 cursor-pointer text-large transition-all hover:scale-105"
-              />
-            )}
-          </SheetTrigger>
+          {status === "loading" ? (
+            <Spinner size="md" color="primary" />
+          ) : (
+            <SheetTrigger asChild>
+              {status === "unauthenticated" ? (
+                <Avatar
+                  showFallback
+                  src=""
+                  isBordered
+                  color="primary"
+                  className="h-9 w-9 cursor-pointer text-large transition-all hover:scale-105"
+                />
+              ) : (
+                <Avatar
+                  showFallback
+                  src={data?.user?.image!}
+                  isBordered
+                  color="primary"
+                  className="h-9 w-9 cursor-pointer text-large transition-all hover:scale-105"
+                />
+              )}
+            </SheetTrigger>
+          )}
 
           <SheetContent side={"right"}>
             <SheetHeader>
