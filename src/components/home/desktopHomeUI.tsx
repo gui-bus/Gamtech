@@ -3,8 +3,11 @@ import Image from "next/image";
 import { DesktopBannerSection } from "./desktopBannerSection";
 import { DesktopProductListSection } from "./desktopProductListSection";
 import ProductList from "./productList";
+import CategoryList from "./categoryList";
 
 export default async function DesktopUI() {
+  const categories = await prismaClient.category.findMany({});
+
   const mousesAndHeadphonesBanner = [
     {
       src: "/banner-mouses.png",
@@ -93,6 +96,12 @@ export default async function DesktopUI() {
           sizes="100vw"
           priority
         />
+
+        <div className="flex flex-wrap items-center justify-center gap-2 pt-5">
+          {categories.map((category) => (
+            <CategoryList key={category.id} category={category} />
+          ))}
+        </div>
 
         <section className="my-5">
           <div className="hidden md:block">

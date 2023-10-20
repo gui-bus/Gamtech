@@ -3,8 +3,11 @@ import { BannerSection } from "./bannerSection";
 import { ProductListSection } from "./productListSection";
 import Image from "next/image";
 import ProductList from "./productList";
+import CategoryList from "./categoryList";
 
 export default async function MobileUI() {
+  const categories = await prismaClient.category.findMany({});
+
   async function fetchProductsByCategory(categorySlug: string) {
     return await prismaClient.product.findMany({
       where: {
@@ -52,6 +55,12 @@ export default async function MobileUI() {
           sizes="100vw"
           priority
         />
+
+        <div className="flex flex-wrap items-center justify-center gap-2 pt-5">
+          {categories.map((category) => (
+            <CategoryList key={category.id} category={category} />
+          ))}
+        </div>
 
         <section className="my-5">
           <h2 className="mb-2 pl-5 text-lg font-semibold">Ofertas</h2>
