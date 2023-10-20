@@ -12,7 +12,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
 import { Separator } from "../ui/separator";
 import { HiShoppingCart, HiSun, HiMoon, HiShoppingBag } from "react-icons/hi2";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
-import { TbDiscount2, TbListSearch, TbHomeMove } from "react-icons/tb";
+import { TbDiscount2, TbCategory2, TbHomeMove } from "react-icons/tb";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import { useTheme } from "next-themes";
@@ -164,29 +164,35 @@ export default function Header() {
             </h1>
 
             <div className="flex flex-col items-center justify-center gap-2">
-              <Button
-                color="default"
-                className="hoverButton w-full"
-                endContent={<TbHomeMove size={20} />}
-              >
-                Página inicial
-              </Button>
+              <Link href="/" className="w-full">
+                <Button
+                  color="default"
+                  endContent={<TbHomeMove size={20} />}
+                  className="hoverButton w-full"
+                >
+                  Página inicial
+                </Button>
+              </Link>
 
-              <Button
-                color="default"
-                className="hoverButton w-full"
-                endContent={<TbDiscount2 size={20} />}
-              >
-                Promoções
-              </Button>
+              <Link href="/promo" className="w-full">
+                <Button
+                  color="default"
+                  endContent={<TbDiscount2 size={20} />}
+                  className="hoverButton w-full"
+                >
+                  Ofertas imperdíveis
+                </Button>
+              </Link>
 
-              <Button
-                color="default"
-                className="hoverButton w-full"
-                endContent={<TbListSearch size={20} />}
-              >
-                Catálogo
-              </Button>
+              <Link href="/catalog" className="w-full">
+                <Button
+                  color="default"
+                  endContent={<TbCategory2 size={20} />}
+                  className="hoverButton w-full"
+                >
+                  Categorias
+                </Button>
+              </Link>
             </div>
           </SheetContent>
         </Sheet>
