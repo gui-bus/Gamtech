@@ -63,4 +63,8 @@
   .hoverButton {
     @apply transition-all hover:bg-default/70;
   }
+
+  .footerLink {
+    @apply transition-all group-hover:text-[#1267dc];
+  }
 }

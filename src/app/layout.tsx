@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/common/header";
 import UIProvider from "@/providers/uiprovider";
 import { AuthProvider } from "@/providers/auth";
+import Footer from "@/components/common/footer";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
               >
                 <Header />
                 <main className="flex-grow">{children}</main>
+                <Footer/>
               </ThemeProvider>
             </UIProvider>
           </AuthProvider>
