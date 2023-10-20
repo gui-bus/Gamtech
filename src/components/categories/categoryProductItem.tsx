@@ -34,12 +34,12 @@ const CategoryProductItem = ({ product }: ProductItemProps) => {
       </div>
 
       {/* Text */}
-      <div className="flex flex-col gap-1 text-center">
+      <div className="flex flex-col gap-1 md:text-center">
         <p className="overflow-hidden text-ellipsis whitespace-nowrap text-tiny">
           {product.name}
         </p>
 
-        <div className="flex items-center gap-2 justify-center">
+        <div className="flex items-center gap-2 md:justify-center">
           {product.discountPercentage > 0 ? (
             <>
               <p className="text-xs font-extrabold text-[#1267dc]">
