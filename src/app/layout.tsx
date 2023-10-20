@@ -25,22 +25,22 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={montserrat.className}>
-        <div className="flex min-h-screen flex-col bg-gradient-to-t from-foreground/30 to-foreground/10 dark:from-neutral-900 dark:to-zinc-900">
-          <AuthProvider>
-            <UIProvider>
-              <ThemeProvider
-                attribute="class"
-                defaultTheme="system"
-                enableSystem
-                disableTransitionOnChange
-              >
+        <AuthProvider>
+          <UIProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <div className="flex min-h-screen flex-col bg-gradient-to-t from-foreground/30 to-foreground/10 dark:from-neutral-900 dark:to-zinc-900">
                 <Header />
                 <main className="flex-grow">{children}</main>
-                <Footer/>
-              </ThemeProvider>
-            </UIProvider>
-          </AuthProvider>
-        </div>
+                <Footer />
+              </div>
+            </ThemeProvider>
+          </UIProvider>
+        </AuthProvider>
       </body>
     </html>
   );
