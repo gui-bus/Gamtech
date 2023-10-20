@@ -42,7 +42,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
         <div className="flex items-center gap-2">
           {product.discountPercentage > 0 ? (
             <>
-              <p className="text-xs font-bold">
+              <p className="text-xs font-extrabold text-[#1267dc]">
                 {product.totalPrice.toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
@@ -56,7 +56,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
               </p>
             </>
           ) : (
-            <p className="text-xs font-bold">
+            <p className="text-xs font-extrabold text-[#1267dc]">
               {Number(product.basePrice).toLocaleString("pt-BR", {
                 style: "currency",
                 currency: "BRL",
