@@ -5,38 +5,51 @@ import { DesktopProductListSection } from "./desktopProductListSection";
 import ProductList from "./productList";
 import CategoryList from "./categoryList";
 
+import { BANNER_LINK } from "@/constants/bannerLink";
+
 export default async function DesktopUI() {
   const categories = await prismaClient.category.findMany({});
 
-  const mousesAndHeadphonesBanner = [
+  const mousesAndKeyboardsBanner = [
     {
-      src: "/banner-mouses.png",
-      alt: "Até 15% de desconto em mouses",
+      src: BANNER_LINK.banner_keyboards,
+      alt: "Até 25% de desconto em teclados",
     },
     {
-      src: "/banner-headphones.png",
+      src: BANNER_LINK.banner_mouses,
+      alt: "Até 15% de desconto em mouses",
+    },
+  ];
+
+  const speakersAndHeadphonesBanner = [
+    {
+      src: BANNER_LINK.banner_speakers,
+      alt: "Até 10% de desconto em caixas de som",
+    },
+    {
+      src: BANNER_LINK.banner_headphones,
       alt: "Até 20% de desconto em headphones",
     },
   ];
 
-  const monitorsAndSpeakersBanner = [
+  const monitorsAndGpuBanner = [
     {
-      src: "/banner-monitors.png",
+      src: BANNER_LINK.banner_monitors,
       alt: "Até 15% de desconto em monitores",
     },
     {
-      src: "/banner-speakers.png",
-      alt: "Até 10% de desconto em caixas de som",
+      src: BANNER_LINK.banner_gpu,
+      alt: "Até 30% de desconto em placas de vídeo",
     },
   ];
 
-  const keyboardsAndMousepadsBanner = [
+  const caseAndMousepadsBanner = [
     {
-      src: "/banner-keyboards.png",
-      alt: "Até 25% de desconto em teclados",
+      src: BANNER_LINK.banner_case,
+      alt: "Até 20% de desconto em gabinetes",
     },
     {
-      src: "/banner-mousepads.png",
+      src: BANNER_LINK.banner_mousepads,
       alt: "Até 15% de desconto em mousepads",
     },
   ];
@@ -71,16 +84,18 @@ export default async function DesktopUI() {
 
   const deals = await fetchProductsByDiscount();
 
-  const headphonesAndMouses = await fetchProductsByCategories([
-    "headphones",
+  const mousesAndKeyboards = await fetchProductsByCategories([
+    "keyboards",
     "mouses",
   ]);
-  const monitorsAndSpeakers = await fetchProductsByCategories([
-    "monitors",
+  const speakersAndHeadphones = await fetchProductsByCategories([
+    "headphones",
     "speakers",
   ]);
-  const keyboardsAndMousepads = await fetchProductsByCategories([
-    "keyboards",
+  const monitorsAndGpu = await fetchProductsByCategories(["gpu", "monitors"]);
+
+  const caseAndMousepads = await fetchProductsByCategories([
+    "cases",
     "mousepads",
   ]);
 
@@ -88,7 +103,7 @@ export default async function DesktopUI() {
     <main>
       <div className="hidden md:block">
         <Image
-          src="/banner-deals-desktop.png"
+          src={BANNER_LINK.banner_deals_desktop}
           alt="Até 35% de desconto só esse mês"
           width={0}
           height={0}
@@ -116,30 +131,35 @@ export default async function DesktopUI() {
         </section>
       </div>
 
-      <DesktopBannerSection images={mousesAndHeadphonesBanner} />
+      <DesktopBannerSection images={mousesAndKeyboardsBanner} />
       <DesktopProductListSection
-        products={headphonesAndMouses}
-        description="Potencialize sua jornada digital com os melhores acessórios."
+        products={mousesAndKeyboards}
+        description="Potencialize sua jornada digital com os melhores periféricos."
       />
 
-      <DesktopBannerSection images={monitorsAndSpeakersBanner} />
+      <DesktopBannerSection images={monitorsAndGpuBanner} />
       <DesktopProductListSection
-        products={monitorsAndSpeakers}
-        description="Descubra a combinação perfeita de qualidade de som e imagem em nossa
-        coleção."
+        products={monitorsAndGpu}
+        description="Encontre a combinação ideal para ter a melhor experiência visual."
       />
 
-      <DesktopBannerSection images={keyboardsAndMousepadsBanner} />
+      <DesktopBannerSection images={caseAndMousepadsBanner} />
       <DesktopProductListSection
-        products={keyboardsAndMousepads}
-        description="Encontre a combinação ideal para aprimorar o seu setup."
+        products={caseAndMousepads}
+        description="Explore as possibilidades para aprimorar o seu espaço de trabalho."
+      />
+
+      <DesktopBannerSection images={speakersAndHeadphonesBanner} />
+      <DesktopProductListSection
+        products={speakersAndHeadphones}
+        description="Descubra o que é qualidade de som em nossa coleção."
       />
 
       {/* Desktop Banner 04 -  Delivery */}
       <div className="hidden md:block">
         <div className="mt-5 w-full">
           <Image
-            src="/banner-fretegratis.png"
+            src={BANNER_LINK.banner_fretegratis}
             alt="Até 15% de desconto em mouses"
             width={0}
             height={0}
