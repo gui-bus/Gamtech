@@ -18,7 +18,7 @@ const CategoryProductItem = ({ product }: ProductItemProps) => {
           width={0}
           height={0}
           sizes="100vw"
-          className="h-24 w-auto max-w-[90%]"
+          className="h-32 w-auto max-w-[90%]"
           style={{ objectFit: "contain" }}
         />
         {product.discountPercentage > 0 && (
