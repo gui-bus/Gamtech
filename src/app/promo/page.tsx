@@ -37,8 +37,8 @@ const PromoPage = async () => {
       </div>
 
       <Image
-        src={BANNER_LINK.banner_promomobile}
-        alt="Descontos incríveis e por tempo limitado!"
+        src={BANNER_LINK.banner_cover_2_mobile}
+        alt="Até 35% de desconto só esse mês, aproveite agora mesmo!"
         width={0}
         height={0}
         className="h-auto w-full md:hidden"
@@ -47,8 +47,8 @@ const PromoPage = async () => {
       />
 
       <Image
-        src={BANNER_LINK.banner_promo}
-        alt="Descontos incríveis e por tempo limitado!"
+        src={BANNER_LINK.banner_cover_2}
+        alt="Até 35% de desconto só esse mês, aproveite agora mesmo!"
         width={0}
         height={0}
         className="hidden h-auto w-full md:block"

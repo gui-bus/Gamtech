@@ -5,6 +5,12 @@ import { DesktopProductListSection } from "./desktopProductListSection";
 import ProductList from "./productList";
 import CategoryList from "./categoryList";
 
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
+import { Button } from "@nextui-org/react";
+
+import { TbCategory2 } from "react-icons/tb";
+import { Separator } from "../ui/separator";
+
 import { BANNER_LINK } from "@/constants/bannerLink";
 
 export default async function DesktopUI() {
@@ -54,6 +60,17 @@ export default async function DesktopUI() {
     },
   ];
 
+  const consolesAndGamepadsBanner = [
+    {
+      src: BANNER_LINK.banner_consoles,
+      alt: "Até 10% de desconto em consoles",
+    },
+    {
+      src: BANNER_LINK.banner_gamepads,
+      alt: "Até 20% de desconto em Controles",
+    },
+  ];
+
   async function fetchProductsByCategories(categorySlugs: string[]) {
     return await prismaClient.product.findMany({
       where: {
@@ -99,12 +116,17 @@ export default async function DesktopUI() {
     "mousepads",
   ]);
 
+  const consolesAndGamepads = await fetchProductsByCategories([
+    "consoles",
+    "gamepads",
+  ]);
+
   return (
     <main>
       <div className="hidden md:block">
         <Image
-          src={BANNER_LINK.banner_deals_desktop}
-          alt="Até 35% de desconto só esse mês"
+          src={BANNER_LINK.banner_cover}
+          alt="O melhor do mundo tech, ofertas imperdíveis!"
           width={0}
           height={0}
           className="hidden h-96 w-full object-cover md:block"
@@ -113,9 +135,34 @@ export default async function DesktopUI() {
         />
 
         <div className="flex flex-wrap items-center justify-center gap-2 pt-5">
-          {categories.map((category) => (
-            <CategoryList key={category.id} category={category} />
-          ))}
+          <Sheet>
+            <div className="w-full max-w-xl px-5">
+              <SheetTrigger asChild>
+                <Button
+                  className="w-full"
+                  endContent={<TbCategory2 size={20} />}
+                >
+                  Ver categorias
+                </Button>
+              </SheetTrigger>
+
+              <Separator className="mt-5" />
+            </div>
+
+            <SheetContent side={"bottom"}>
+              <SheetHeader>
+                <h1 className="mx-auto mb-4 text-lg font-semibold">
+                  Categorias
+                </h1>
+              </SheetHeader>
+
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                {categories.map((category) => (
+                  <CategoryList key={category.id} category={category} />
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
 
         <section className="my-5">
@@ -130,6 +177,7 @@ export default async function DesktopUI() {
           <ProductList products={deals} />
         </section>
       </div>
+
 
       <DesktopBannerSection images={mousesAndKeyboardsBanner} />
       <DesktopProductListSection
@@ -155,7 +203,13 @@ export default async function DesktopUI() {
         description="Descubra o que é qualidade de som em nossa coleção."
       />
 
-      {/* Desktop Banner 04 -  Delivery */}
+      <DesktopBannerSection images={consolesAndGamepadsBanner} />
+      <DesktopProductListSection
+        products={consolesAndGamepads}
+        description=""
+      />
+
+      {/* Desktop Banner -  Delivery */}
       <div className="hidden md:block">
         <div className="mt-5 w-full">
           <Image

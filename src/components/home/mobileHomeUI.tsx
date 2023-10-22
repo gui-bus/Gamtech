@@ -27,6 +27,43 @@ export default async function MobileUI() {
     });
   }
 
+  async function fetchProductsByCategories(categorySlugs: string[]) {
+    return await prismaClient.product.findMany({
+      where: {
+        category: {
+          slug: {
+            in: categorySlugs,
+          },
+        },
+      },
+      orderBy: {
+        id: "asc",
+      },
+    });
+  }
+
+  const mousesAndKeyboards = await fetchProductsByCategories([
+    "keyboards",
+    "mouses",
+  ]);
+  const speakersAndHeadphones = await fetchProductsByCategories([
+    "headphones",
+    "speakers",
+  ]);
+  const monitorsAndGpu = await fetchProductsByCategories(["gpu", "monitors"]);
+
+  const caseAndMousepads = await fetchProductsByCategories([
+    "cases",
+    "mousepads",
+  ]);
+
+  const consolesAndGamepads = await fetchProductsByCategories([
+    "consoles",
+    "gamepads",
+  ]);
+
+  const cpuAndMotherboard = await fetchProductsByCategories(["cpu", ""]);
+
   async function fetchProductsByDiscount() {
     return await prismaClient.product.findMany({
       where: {
@@ -55,16 +92,17 @@ export default async function MobileUI() {
   return (
     <main>
       <div className="md:hidden">
-        <Image
-          src={BANNER_LINK.banner_deals_mobile}
-          alt="Até 35% de desconto só esse mês"
-          width={0}
-          height={0}
-          className="h-auto w-full"
-          sizes="100vw"
-          priority
-        />
-
+        <div className="mt-5 flex w-full gap-2">
+          <Image
+            src={BANNER_LINK.banner_cover_mobile}
+            alt="O melhor do mundo tech, ofertas imperdíveis!"
+            width={0}
+            height={0}
+            className="h-auto w-full object-cover"
+            sizes="100vw"
+            priority
+          />
+        </div>
         <div className="flex flex-wrap items-center justify-center gap-2 pt-5">
           <Sheet>
             <div className="w-full px-5">
@@ -103,58 +141,46 @@ export default async function MobileUI() {
       </div>
 
       <BannerSection
-        imageSrc={BANNER_LINK.banner_mouses}
-        altText="Até 15% de desconto em mouses"
+        imageSrc={BANNER_LINK.banner_perifericos}
+        altText="Até 25% de desconto em perifericos"
       />
-      <ProductListSection title="Mouses" products={mouses} />
+      <ProductListSection title="Periféricos" products={mousesAndKeyboards} />
 
       <BannerSection
-        imageSrc={BANNER_LINK.banner_gpu}
-        altText="Até 30% de desconto em placas de vídeo"
+        imageSrc={BANNER_LINK.banner_video}
+        altText="Até 30% de desconto em dispositivos de vídeo"
       />
-      <ProductListSection title="Placas de vídeo" products={gpu} />
+      <ProductListSection
+        title="Dispositivos de Vídeo"
+        products={monitorsAndGpu}
+      />
 
       <BannerSection
-        imageSrc={BANNER_LINK.banner_keyboards}
-        altText="Até 25% de desconto em teclados"
+        imageSrc={BANNER_LINK.banner_desktop}
+        altText="Até 20% de desconto em desktop"
       />
-      <ProductListSection title="Teclados" products={keyboards} />
+      <ProductListSection title="Desktop" products={caseAndMousepads} />
 
       <BannerSection
-        imageSrc={BANNER_LINK.banner_monitors}
-        altText="Até 15% de desconto em monitores"
+        imageSrc={BANNER_LINK.banner_audio}
+        altText="Até 20% de desconto em dispositivos áudio"
       />
-      <ProductListSection title="Monitores" products={monitors} />
+      <ProductListSection
+        title="Dispositivos de Áudio"
+        products={speakersAndHeadphones}
+      />
 
       <BannerSection
-        imageSrc={BANNER_LINK.banner_case}
-        altText="Até 20% de desconto em gabinetes"
+        imageSrc={BANNER_LINK.banner_hardware}
+        altText="Até 35% de desconto em hardware"
       />
-      <ProductListSection title="Gabinetes" products={cases} />
+      <ProductListSection title="Hardware" products={cpuAndMotherboard} />
 
       <BannerSection
-        imageSrc={BANNER_LINK.banner_speakers}
-        altText="Até 15% de desconto em caixas de som"
+        imageSrc={BANNER_LINK.banner_games}
+        altText="Até 20% de desconto em jogos"
       />
-      <ProductListSection title="Caixas de som" products={speakers} />
-
-      <BannerSection
-        imageSrc={BANNER_LINK.banner_mousepads}
-        altText="Até 15% de desconto em mousepads"
-      />
-      <ProductListSection title="Mousepads" products={mousepads} />
-
-      <BannerSection
-        imageSrc={BANNER_LINK.banner_headphones}
-        altText="Até 20% de desconto em headphones"
-      />
-      <ProductListSection title="Headphones" products={headphones} />
-
-      <BannerSection
-        imageSrc={BANNER_LINK.banner_consoles}
-        altText="Até 10% de desconto em consoles"
-      />
-      <ProductListSection title="Consoles" products={consoles} />
+      <ProductListSection title="Video Games" products={consolesAndGamepads} />
 
       <div className="md:hidden">
         <div className="mt-5 flex w-full gap-2">
