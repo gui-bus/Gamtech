@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import {
   Navbar,
   NavbarContent,
@@ -7,6 +7,7 @@ import {
   Avatar,
   Link,
   Spinner,
+  Chip,
 } from "@nextui-org/react";
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
 import { Separator } from "../ui/separator";
@@ -18,10 +19,10 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
 
 import Image from "next/image";
+import Cart from "./cart";
 
 export default function Header() {
   const { setTheme, theme } = useTheme();
-
   const { status, data } = useSession();
 
   const toggleTheme = () => {
@@ -52,11 +53,31 @@ export default function Header() {
       </NavbarContent>
 
       <NavbarContent as="div" justify="end" className="flex items-center gap-4">
-        <Button
-          variant="light"
-          isIconOnly
-          startContent={<HiShoppingCart size={24} />}
-        />
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              variant="light"
+              isIconOnly
+              startContent={<HiShoppingCart size={24} />}
+            />
+          </SheetTrigger>
+
+          <SheetContent side={"right"}>
+            <SheetHeader className="flex items-center">
+              <Chip
+                startContent={<HiShoppingCart size={20} />}
+                color="primary"
+                variant="bordered"
+                className="cursor-default p-[1.125rem] text-black dark:text-white"
+                radius="lg"
+              >
+                <span className="font-bold uppercase">Carrinho</span>
+              </Chip>
+            </SheetHeader>
+
+            <Cart />
+          </SheetContent>
+        </Sheet>
 
         <Sheet>
           {status === "loading" ? (

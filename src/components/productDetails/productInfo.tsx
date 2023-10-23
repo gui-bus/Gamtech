@@ -7,26 +7,23 @@ import {
   Chip,
   Tooltip,
 } from "@nextui-org/react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { BsArrowDownShort } from "react-icons/bs";
 import { BiSolidChevronRight, BiSolidChevronLeft } from "react-icons/bi";
 import { HiShoppingCart } from "react-icons/hi";
 import { FaTruckFast } from "react-icons/fa6";
-import { Separator } from "../ui/separator";
 import { useSession } from "next-auth/react";
+import { CartContext } from "@/providers/cart";
 
 interface ProductInfoProps {
-  product: Pick<
-    ProductWithTotalPrice,
-    "basePrice" | "description" | "discountPercentage" | "name" | "totalPrice"
-  >;
+  product: ProductWithTotalPrice;
 }
 
-const ProductInfo = ({
-  product: { basePrice, description, discountPercentage, name, totalPrice },
-}: ProductInfoProps) => {
+const ProductInfo = ({ product }: ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1);
   const { status, data } = useSession();
+
+  const { AddProductsToCart } = useContext(CartContext);
 
   const handleDecreaseQuantity = () => {
     setQuantity((prev) => (prev === 1 ? prev : prev - 1));
@@ -36,28 +33,32 @@ const ProductInfo = ({
     setQuantity((prev) => prev + 1);
   };
 
+  const handleAddToCartClick = () => {
+    AddProductsToCart({ ...product, quantity });
+  };
+
   return (
     <div className="flex flex-col bg-white/50  p-5 dark:bg-neutral-800 lg:rounded-bl-3xl">
-      <h2 className="text-center text-lg">{name}</h2>
+      <h2 className="text-center text-lg">{product.name}</h2>
 
       <div className="my-2 flex items-center justify-center gap-2">
-        {discountPercentage > 0 ? (
+        {product.discountPercentage > 0 ? (
           <>
             <Chip
               variant="solid"
               size="sm"
               startContent={<BsArrowDownShort size={20} />}
             >
-              <p className="text-tiny">{discountPercentage}%</p>
+              <p className="text-tiny">{product.discountPercentage}%</p>
             </Chip>
             <p className="text-xl font-extrabold text-[#1267dc]">
-              {totalPrice.toLocaleString("pt-BR", {
+              {product.totalPrice.toLocaleString("pt-BR", {
                 style: "currency",
                 currency: "BRL",
               })}
             </p>
             <p className="text-sm line-through opacity-75">
-              {Number(basePrice).toLocaleString("pt-BR", {
+              {Number(product.basePrice).toLocaleString("pt-BR", {
                 style: "currency",
                 currency: "BRL",
               })}
@@ -65,7 +66,7 @@ const ProductInfo = ({
           </>
         ) : (
           <p className="text-xl font-extrabold text-[#1267dc]">
-            {Number(basePrice).toLocaleString("pt-BR", {
+            {Number(product.basePrice).toLocaleString("pt-BR", {
               style: "currency",
               currency: "BRL",
             })}
@@ -101,6 +102,7 @@ const ProductInfo = ({
               variant="shadow"
               color="primary"
               className="w-full font-bold"
+              onClick={handleAddToCartClick}
             >
               Adicionar ao carrinho
             </Button>
@@ -135,7 +137,7 @@ const ProductInfo = ({
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 mt-2">
+      <div className="mt-2 flex flex-col gap-4">
         <div className="flex items-center justify-between rounded-lg bg-white/50 px-5 py-3 text-xs dark:bg-neutral-900 md:text-sm">
           <div className="flex items-center justify-center gap-2">
             <FaTruckFast size={40} />
@@ -168,7 +170,7 @@ const ProductInfo = ({
               }
             >
               <p className="px-2 pb-4 text-justify opacity-80">
-                {description.replace(/\\n/g, "\n")}
+                {product.description.replace(/\\n/g, "\n")}
               </p>
             </AccordionItem>
           </Accordion>
