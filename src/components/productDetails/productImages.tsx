@@ -1,14 +1,16 @@
 "use client";
 import { Button } from "@nextui-org/react";
+import { Product } from "@prisma/client";
 import Image from "next/image";
 import { useState } from "react";
 
 interface ProductImagesProps {
-  name: string;
-  imageUrls: string[];
+  product: Pick<Product, "imageUrls" | "name">;
 }
 
-const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
+const ProductImages = ({
+  product: { imageUrls, name },
+}: ProductImagesProps) => {
   const [currentImage, setCurrentImage] = useState(imageUrls[0]);
 
   const handleImageClick = (imageUrl: string) => {
@@ -24,13 +26,13 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
           width={0}
           height={0}
           sizes="100vw"
-          className="h-full w-full p-2"
+          className="h-full w-full p-4 "
           style={{ objectFit: "contain" }}
         />
       </div>
 
       {/* Buttons */}
-      <div className="mx-auto my-4 grid grid-cols-4 gap-3 px-2">
+      <div className={`mx-auto my-4 grid ${imageUrls.length === 4 ? 'grid-cols-4' : 'grid-cols-3'} gap-3 px-2`}>
         {imageUrls.map((imageUrl) => (
           <Button
             key={imageUrl}
@@ -46,7 +48,7 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
               width={0}
               height={0}
               sizes="100vw"
-              className="h-full w-full"
+              className="h-full w-full p-2"
               style={{ objectFit: "contain" }}
             />
           </Button>
