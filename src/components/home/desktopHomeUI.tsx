@@ -71,6 +71,17 @@ export default async function DesktopUI() {
     },
   ];
 
+  const cpuAndMotherboardsBanner = [
+    {
+      src: BANNER_LINK.banner_motherboard,
+      alt: "Até 30% de desconto em Placas mãe",
+    },
+    {
+      src: BANNER_LINK.banner_cpu,
+      alt: "Até 35% de desconto em Processadores",
+    },
+  ];
+
   async function fetchProductsByCategories(categorySlugs: string[]) {
     return await prismaClient.product.findMany({
       where: {
@@ -119,6 +130,11 @@ export default async function DesktopUI() {
   const consolesAndGamepads = await fetchProductsByCategories([
     "consoles",
     "gamepads",
+  ]);
+
+  const cpuAndMotherboards = await fetchProductsByCategories([
+    "cpu",
+    "motherboards",
   ]);
 
   return (
@@ -177,6 +193,12 @@ export default async function DesktopUI() {
           <ProductList products={deals} />
         </section>
       </div>
+
+      <DesktopBannerSection images={cpuAndMotherboardsBanner} />
+      <DesktopProductListSection
+        products={cpuAndMotherboards}
+        description="Extraia o potencial máximo da sua máquina."
+      />
 
 
       <DesktopBannerSection images={mousesAndKeyboardsBanner} />
