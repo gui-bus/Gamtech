@@ -32,7 +32,7 @@ const ProductList = ({ products }: ProductListProps) => {
 
   return (
     <div
-      className="md:scrollbar-thin scrollbar-thumb-[#727272] dark:scrollbar-thumb-[#22222a] scrollbar-track-white flex w-full gap-4 overflow-x-auto px-5"
+      className="flex w-full gap-4 overflow-x-auto px-5 scrollbar-track-white scrollbar-thumb-[#727272] dark:scrollbar-thumb-[#22222a] md:scrollbar-thin"
       onWheel={handleWheelScroll}
       ref={containerRef}
       onMouseEnter={handleHover}
