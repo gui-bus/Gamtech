@@ -135,39 +135,44 @@ const ProductInfo = ({
         </div>
       </div>
 
-      <div className="flex items-center justify-between rounded-lg bg-white/50 px-5 py-3 text-xs dark:bg-neutral-900 md:text-sm">
-        <div className="flex items-center justify-center gap-2">
-          <FaTruckFast size={40} />
-          <div>
-            <p>
-              Entrega via <span className="font-bold">Gampack &reg;</span>
-            </p>
-            <p className="font-bold text-primary">
-              Envio para <span className="font-bold">todo o Brasil</span>
-            </p>
+      <div className="flex flex-col gap-4 mt-2">
+        <div className="flex items-center justify-between rounded-lg bg-white/50 px-5 py-3 text-xs dark:bg-neutral-900 md:text-sm">
+          <div className="flex items-center justify-center gap-2">
+            <FaTruckFast size={40} />
+            <div>
+              <p>
+                Entrega via <span className="font-bold">Gampack &reg;</span>
+              </p>
+              <p className="font-bold text-primary">
+                Envio para <span className="font-bold">todo o Brasil</span>
+              </p>
+            </div>
           </div>
+
+          <p className="font-bold">Frete Grátis</p>
         </div>
 
-        <p className="font-bold">Frete Grátis</p>
-      </div>
-
-      <div className="mt-14 flex flex-col gap-3">
-        <Accordion variant="shadow" className="bg-white/50 dark:bg-neutral-900">
-          <AccordionItem
-            key="1"
-            aria-label="Sobre o produto"
-            title={<h1 className="ml-2 font-semibold">Sobre o produto</h1>}
-            subtitle={
-              <p className="ml-2 text-tiny opacity-80">
-                Clique para ver mais detalhes
-              </p>
-            }
+        <div className="flex flex-col gap-3">
+          <Accordion
+            variant="shadow"
+            className="bg-white/50 dark:bg-neutral-900"
           >
-            <p className="px-2 pb-4 text-justify opacity-80">
-              {description.replace(/\\n/g, "\n")}
-            </p>
-          </AccordionItem>
-        </Accordion>
+            <AccordionItem
+              key="1"
+              aria-label="Sobre o produto"
+              title={<h1 className="ml-2 font-semibold">Sobre o produto</h1>}
+              subtitle={
+                <p className="ml-2 text-tiny opacity-80">
+                  Clique para ver mais detalhes
+                </p>
+              }
+            >
+              <p className="px-2 pb-4 text-justify opacity-80">
+                {description.replace(/\\n/g, "\n")}
+              </p>
+            </AccordionItem>
+          </Accordion>
+        </div>
       </div>
     </div>
   );
