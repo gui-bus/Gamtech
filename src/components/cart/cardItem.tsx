@@ -1,5 +1,5 @@
-import { CartProduct } from "@/providers/cart";
-import React from "react";
+import { CartContext, CartProduct } from "@/providers/cart";
+import React, { useContext } from "react";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
 import { Button } from "@nextui-org/react";
@@ -12,6 +12,24 @@ interface CardItemProps {
 }
 
 const CartItem = ({ product }: CardItemProps) => {
+  const {
+    decreaseProductQuantity,
+    increaseProductQuantity,
+    removeProductFromCart,
+  } = useContext(CartContext);
+
+  const handleDecreaseProductQuantityClick = () => {
+    decreaseProductQuantity(product.id);
+  };
+
+  const handleIncreaseProductQuantityClick = () => {
+    increaseProductQuantity(product.id);
+  };
+
+  const handleRemoveProductClick = () => {
+    removeProductFromCart(product.id);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center text-center">
       <div className="flex flex-col items-center gap-3">
@@ -34,13 +52,13 @@ const CartItem = ({ product }: CardItemProps) => {
             {product.discountPercentage > 0 ? (
               <>
                 <p className="text-base font-extrabold text-gamtech">
-                  {product.totalPrice.toLocaleString("pt-BR", {
+                  {(product.totalPrice * product.quantity).toLocaleString("pt-BR", {
                     style: "currency",
                     currency: "BRL",
                   })}
                 </p>
                 <p className="text-tiny line-through opacity-75">
-                  {Number(product.basePrice).toLocaleString("pt-BR", {
+                  {(Number(product.basePrice) * product.quantity).toLocaleString("pt-BR", {
                     style: "currency",
                     currency: "BRL",
                   })}
@@ -48,7 +66,7 @@ const CartItem = ({ product }: CardItemProps) => {
               </>
             ) : (
               <p className="text-xl font-extrabold text-gamtech">
-                {Number(product.basePrice).toLocaleString("pt-BR", {
+                {(Number(product.basePrice) * product.quantity).toLocaleString("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 })}
@@ -64,6 +82,7 @@ const CartItem = ({ product }: CardItemProps) => {
             color="primary"
             startContent={<BiSolidChevronLeft size={20} />}
             size="sm"
+            onClick={handleDecreaseProductQuantityClick}
           />
           <span className="px-4">{product.quantity}</span>
           <Button
@@ -72,6 +91,7 @@ const CartItem = ({ product }: CardItemProps) => {
             color="primary"
             startContent={<BiSolidChevronRight size={20} />}
             size="sm"
+            onClick={handleIncreaseProductQuantityClick}
           />
         </div>
       </div>
@@ -81,6 +101,7 @@ const CartItem = ({ product }: CardItemProps) => {
         endContent={<HiTrash size={20} />}
         size="sm"
         className="mt-4"
+        onClick={handleRemoveProductClick}
       >
         Remover produto
       </Button>

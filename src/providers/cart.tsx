@@ -1,6 +1,6 @@
 "use client";
 import { ProductWithTotalPrice } from "@/helpers/product";
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export interface CartProduct extends ProductWithTotalPrice {
@@ -14,6 +14,9 @@ interface ICartContext {
   cartTotalDiscount: number;
   cartTotalItems: number;
   AddProductsToCart: (product: CartProduct) => void;
+  decreaseProductQuantity: (productId: string) => void;
+  increaseProductQuantity: (productId: string) => void;
+  removeProductFromCart: (productId: string) => void;
 }
 
 export const CartContext = createContext<ICartContext>({
@@ -23,10 +26,23 @@ export const CartContext = createContext<ICartContext>({
   cartTotalPrice: 0,
   cartTotalItems: 0,
   AddProductsToCart: () => {},
+  decreaseProductQuantity: () => {},
+  increaseProductQuantity: () => {},
+  removeProductFromCart: () => {},
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<CartProduct[]>([]);
+
+  useEffect(() => {
+    setProducts(
+      JSON.parse(localStorage.getItem("@gamtech/cart-products") || "[]"),
+    );
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("@gamtech/cart-products", JSON.stringify(products));
+  }, [products]);
 
   const AddProductsToCart = (product: CartProduct) => {
     const productIsAlreadyOnCart = products.some(
@@ -47,16 +63,68 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         }),
       );
 
-      toast.success(`Produto adicionado ao carrinho`, {
+      toast.success(`Produto adicionado!`, {
         style: { fontSize: "0.7rem" },
       });
       return;
     }
 
     setProducts((prev) => [...prev, product]);
-    toast.success(`Produto adicionado ao carrinho`, {
+    toast.success(`Produto adicionado!`, {
       style: { fontSize: "0.7rem" },
     });
+  };
+
+  const decreaseProductQuantity = (productId: string) => {
+    let itemRemoved = false; // Variável de controle
+
+    setProducts((prev) => {
+      const newProducts = prev
+        .map((cartProduct) => {
+          if (cartProduct.id === productId) {
+            return {
+              ...cartProduct,
+              quantity: cartProduct.quantity - 1,
+            };
+          }
+          return cartProduct;
+        })
+        .filter((cartProduct) => cartProduct.quantity > 0);
+
+      // Verifique se um item foi removido
+      if (!itemRemoved && newProducts.length < prev.length) {
+        itemRemoved = true;
+        toast.success(`Produto removido!`, {
+          style: { fontSize: "0.7rem" },
+        });
+      }
+
+      return newProducts;
+    });
+  };
+
+  const increaseProductQuantity = (productId: string) => {
+    setProducts((prev) =>
+      prev.map((cartProduct) => {
+        if (cartProduct.id === productId) {
+          return {
+            ...cartProduct,
+            quantity: cartProduct.quantity + 1,
+          };
+        }
+
+        return cartProduct;
+      }),
+    );
+  };
+
+  const removeProductFromCart = (productId: string) => {
+    toast.success(`Produto removido!`, {
+      style: { fontSize: "0.7rem" },
+    });
+    setProducts((prev) =>
+      prev.filter((cartProduct) => cartProduct.id !== productId),
+    );
   };
 
   return (
@@ -68,6 +136,9 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         cartTotalDiscount: 0,
         cartTotalPrice: 0,
         cartTotalItems: 0,
+        decreaseProductQuantity,
+        increaseProductQuantity,
+        removeProductFromCart,
       }}
     >
       {children}
