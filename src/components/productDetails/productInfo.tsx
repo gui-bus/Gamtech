@@ -1,12 +1,19 @@
 "use client";
 import { ProductWithTotalPrice } from "@/helpers/product";
-import { Accordion, AccordionItem, Button, Chip } from "@nextui-org/react";
+import {
+  Accordion,
+  AccordionItem,
+  Button,
+  Chip,
+  Tooltip,
+} from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import { BsArrowDownShort } from "react-icons/bs";
 import { BiSolidChevronRight, BiSolidChevronLeft } from "react-icons/bi";
 import { HiShoppingCart } from "react-icons/hi";
 import { FaTruckFast } from "react-icons/fa6";
 import { Separator } from "../ui/separator";
+import { useSession } from "next-auth/react";
 
 interface ProductInfoProps {
   product: Pick<
@@ -19,6 +26,7 @@ const ProductInfo = ({
   product: { basePrice, description, discountPercentage, name, totalPrice },
 }: ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1);
+  const { status, data } = useSession();
 
   const handleDecreaseQuantity = () => {
     setQuantity((prev) => (prev === 1 ? prev : prev - 1));
@@ -87,14 +95,43 @@ const ProductInfo = ({
         </div>
 
         <div className="w-full max-w-xl">
-          <Button
-            endContent={<HiShoppingCart size={20} />}
-            variant="shadow"
-            color="primary"
-            className="w-full font-bold"
-          >
-            Adicionar ao carrinho
-          </Button>
+          {status === "authenticated" && data?.user ? (
+            <Button
+              endContent={<HiShoppingCart size={20} />}
+              variant="shadow"
+              color="primary"
+              className="w-full font-bold"
+            >
+              Adicionar ao carrinho
+            </Button>
+          ) : (
+            <Tooltip
+              content={
+                <p className="cursor-default text-center font-bold">
+                  Oops! Para adicionar este item ao carrinho é necessário fazer
+                  login.
+                </p>
+              }
+              delay={0}
+              closeDelay={0}
+              color="primary"
+              placement="bottom"
+              radius="sm"
+              className="w-full max-w-xs"
+            >
+              <div className="w-full cursor-not-allowed">
+                <Button
+                  endContent={<HiShoppingCart size={20} />}
+                  variant="shadow"
+                  color="primary"
+                  className="w-full font-bold"
+                  isDisabled
+                >
+                  Adicionar ao carrinho
+                </Button>
+              </div>
+            </Tooltip>
+          )}
         </div>
       </div>
 
@@ -114,15 +151,14 @@ const ProductInfo = ({
         <p className="font-bold">Frete Grátis</p>
       </div>
 
-
       <div className="mt-14 flex flex-col gap-3">
         <Accordion variant="shadow" className="bg-white/50 dark:bg-neutral-900">
           <AccordionItem
             key="1"
             aria-label="Sobre o produto"
-            title={<h1 className="font-semibold ml-2">Sobre o produto</h1>}
+            title={<h1 className="ml-2 font-semibold">Sobre o produto</h1>}
             subtitle={
-              <p className="text-tiny opacity-80 ml-2">
+              <p className="ml-2 text-tiny opacity-80">
                 Clique para ver mais detalhes
               </p>
             }
