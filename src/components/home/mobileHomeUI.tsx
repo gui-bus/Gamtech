@@ -14,19 +14,6 @@ import { Separator } from "../ui/separator";
 export default async function MobileUI() {
   const categories = await prismaClient.category.findMany({});
 
-  async function fetchProductsByCategory(categorySlug: string) {
-    return await prismaClient.product.findMany({
-      where: {
-        category: {
-          slug: categorySlug,
-        },
-      },
-      orderBy: {
-        id: "asc",
-      },
-    });
-  }
-
   async function fetchProductsByCategories(categorySlugs: string[]) {
     return await prismaClient.product.findMany({
       where: {
@@ -62,7 +49,7 @@ export default async function MobileUI() {
     "gamepads",
   ]);
 
-  const cpuAndMotherboard = await fetchProductsByCategories(["cpu", ""]);
+  const cpuAndMotherboard = await fetchProductsByCategories(["cpu", "motherboards"]);
 
   async function fetchProductsByDiscount() {
     return await prismaClient.product.findMany({
@@ -79,15 +66,6 @@ export default async function MobileUI() {
 
   const deals = await fetchProductsByDiscount();
 
-  const headphones = await fetchProductsByCategory("headphones");
-  const mouses = await fetchProductsByCategory("mouses");
-  const monitors = await fetchProductsByCategory("monitors");
-  const speakers = await fetchProductsByCategory("speakers");
-  const keyboards = await fetchProductsByCategory("keyboards");
-  const mousepads = await fetchProductsByCategory("mousepads");
-  const cases = await fetchProductsByCategory("cases");
-  const gpu = await fetchProductsByCategory("gpu");
-  const consoles = await fetchProductsByCategory("consoles");
 
   return (
     <main>
