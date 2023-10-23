@@ -115,7 +115,7 @@ const ProductInfo = ({
       </div>
 
 
-      <div className="mt-8 flex flex-col gap-3">
+      <div className="mt-14 flex flex-col gap-3">
         <Accordion variant="shadow" className="bg-white/50 dark:bg-neutral-900">
           <AccordionItem
             key="1"
