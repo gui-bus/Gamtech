@@ -42,7 +42,7 @@ export const BANNER_LINK = {
   banner_hardware:
     "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-hardware.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWhhcmR3YXJlLnBuZyIsImlhdCI6MTY5ODAwNTE1MSwiZXhwIjoyNTYxOTE4NzUxfQ.6DB287nALjITSQTr-a71hRMOR9yX8o_JSX6msCeSm6E&t=2023-10-22T20%3A05%3A06.766Z",
   banner_games:
-    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-games.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWdhbWVzLnBuZyIsImlhdCI6MTY5ODAwNDcxOSwiZXhwIjoyNTYxOTE4MzE5fQ.KL7xHb5ZIeN_Ed6usElaEfR9RV1DCoqTNOUkMIRY3M8&t=2023-10-22T19%3A57%3A54.469Z",
+    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-games.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWdhbWVzLnBuZyIsImlhdCI6MTY5ODAxMTU5NywiZXhwIjoyNTYxOTI1MTk3fQ.VkmFSt6PQ-rkDYDLXEpUIcgu1V3yafMgMjs_Yf-YJo0&t=2023-10-22T21%3A52%3A31.869Z",
   banner_cover:
     "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-cover.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNvdmVyLnBuZyIsImlhdCI6MTY5ODAwNjk0NSwiZXhwIjoyNTYxOTIwNTQ1fQ.QtBB6OK2StVbdODOPOKUmR65qKekSk1h_kcFCfcpWDU&t=2023-10-22T20%3A35%3A00.145Z",
   banner_cover_mobile:
@@ -51,4 +51,8 @@ export const BANNER_LINK = {
     "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-cover-2.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNvdmVyLTIucG5nIiwiaWF0IjoxNjk4MDA4NDIxLCJleHAiOjI1NjE5MjIwMjF9.PTkuGfP5vFJswd8gpfCtTPGlfCojiKn0i-2_18rTaDw&t=2023-10-22T20%3A59%3A36.079Z",
   banner_cover_2_mobile:
     "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-cover_2_mobile.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNvdmVyXzJfbW9iaWxlLnBuZyIsImlhdCI6MTY5ODAwOTQ3NywiZXhwIjoyNTYxOTIzMDc3fQ.lRF-OXMxEXkd4CeqUXMBGt621FPIiFI2ffhCTzG3A0U&t=2023-10-22T21%3A17%3A12.210Z",
+    banner_motherboard: "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-motherboard.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLW1vdGhlcmJvYXJkLnBuZyIsImlhdCI6MTY5ODAxMjQyOCwiZXhwIjoyNTYxOTI2MDI4fQ.n5dcRA89TQ_IdCvgrTPujs7gAVqoS2NzLY-4rCkzhw8&t=2023-10-22T22%3A06%3A22.738Z",
+    banner_cpu: "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-cpu.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNwdS5wbmciLCJpYXQiOjE2OTgwMTIzOTcsImV4cCI6MjU2MTkyNTk5N30.fkW1DNkHBkeLuJuGZ0-t7HTvAguQ14p1Q2kvsC3CBqQ&t=2023-10-22T22%3A05%3A51.800Z",
+    banner_catalog: "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-catalog.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNhdGFsb2cucG5nIiwiaWF0IjoxNjk4MDczOTQ3LCJleHAiOjI1NjE5ODc1NDd9.S5sABKsnDc_5nAHTpvZGm9GgpmUtaEmB0yeB57oD0JM&t=2023-10-23T15%3A11%3A40.386Z",
+    banner_catalogmobile: "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-catalogmobile.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNhdGFsb2dtb2JpbGUucG5nIiwiaWF0IjoxNjk4MDczOTU2LCJleHAiOjI1NjE5ODc1NTZ9.QeNORXamKI7dbpqZM6725yg2tVj9sX7savOvCAM_emg&t=2023-10-23T15%3A11%3A49.531Z",
 };
