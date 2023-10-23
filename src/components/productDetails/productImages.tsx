@@ -12,6 +12,7 @@ const ProductImages = ({
   product: { imageUrls, name },
 }: ProductImagesProps) => {
   const [currentImage, setCurrentImage] = useState(imageUrls[0]);
+  
 
   const handleImageClick = (imageUrl: string) => {
     setCurrentImage(imageUrl);

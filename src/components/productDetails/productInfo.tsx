@@ -1,7 +1,7 @@
 "use client";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import { Accordion, AccordionItem, Button, Chip } from "@nextui-org/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsArrowDownShort } from "react-icons/bs";
 import { BiSolidChevronRight, BiSolidChevronLeft } from "react-icons/bi";
 import { HiShoppingCart } from "react-icons/hi";

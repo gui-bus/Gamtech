@@ -5,7 +5,7 @@ import ProductInfo from "@/components/productDetails/productInfo";
 import { Separator } from "@/components/ui/separator";
 import { computeProductTotalPrice } from "@/helpers/product";
 import { prismaClient } from "@/lib/prisma";
-import React, { useEffect } from "react";
+import React from "react";
 
 interface ProductDetailsProps {
   params: {
