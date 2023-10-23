@@ -1,3 +1,4 @@
+import ProductImages from "@/components/productDetails/productImages";
 import { prismaClient } from "@/lib/prisma";
 import React from "react";
 
@@ -17,8 +18,14 @@ const ProductDetails = async ({ params: { slug } }: ProductDetailsProps) => {
   if (!product) return null;
 
   return (
-    <div>
-      <h1>{product?.name}</h1>
+    <div className="pb-5">
+      <div className="pb-2">
+        <ProductImages imageUrls={product.imageUrls} name={product.name} />
+      </div>
+
+      <div className="px-5">
+        <h1 className="text-sm font-medium text-center">{product?.name}</h1>
+      </div>
     </div>
   );
 };
