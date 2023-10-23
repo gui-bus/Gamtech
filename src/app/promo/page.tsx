@@ -23,19 +23,6 @@ const PromoPage = async () => {
 
   return (
     <div>
-      <div className="flex items-center justify-start gap-2 p-5">
-        <BackButton />
-        <Chip
-          startContent={<TbDiscount2 size={20} />}
-          color="primary"
-          variant="bordered"
-          className="cursor-default p-[1.125rem] text-black dark:text-white"
-          radius="lg"
-        >
-          <span className="font-bold uppercase">Ofertas Imperdíveis</span>
-        </Chip>
-      </div>
-
       <Image
         src={BANNER_LINK.banner_cover_2_mobile}
         alt="Até 35% de desconto só esse mês, aproveite agora mesmo!"
@@ -55,8 +42,21 @@ const PromoPage = async () => {
         sizes="100vw"
         priority
       />
+      
+      <div className="flex items-center justify-start gap-2 p-5">
+        <BackButton />
+        <Chip
+          startContent={<TbDiscount2 size={20} />}
+          color="primary"
+          variant="bordered"
+          className="cursor-default p-[1.125rem] text-black dark:text-white"
+          radius="lg"
+        >
+          <span className="font-bold uppercase">Ofertas Imperdíveis</span>
+        </Chip>
+      </div>
 
-      <div className="grid grid-cols-2 gap-4 p-5 py-8 md:grid-cols-3 xl:grid-cols-6">
+      <div className="grid grid-cols-2 gap-4 px-5 pb-8 pt-3 md:grid-cols-3 xl:grid-cols-6">
         {deals.map((product) => (
           <CategoryProductItem
             key={product.id}
