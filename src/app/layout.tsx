@@ -9,6 +9,7 @@ import UIProvider from "@/providers/uiprovider";
 import { AuthProvider } from "@/providers/auth";
 import Footer from "@/components/common/footer";
 import CartProvider from "@/providers/cart";
+import { Toaster } from "react-hot-toast";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <UIProvider>
+              <Toaster position="top-center" reverseOrder={false} />
               <ThemeProvider
                 attribute="class"
                 defaultTheme="system"
