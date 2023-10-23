@@ -8,6 +8,7 @@ import Header from "@/components/common/header";
 import UIProvider from "@/providers/uiprovider";
 import { AuthProvider } from "@/providers/auth";
 import Footer from "@/components/common/footer";
+import CartProvider from "@/providers/cart";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -26,20 +27,22 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={montserrat.className}>
         <AuthProvider>
-          <UIProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <div className="flex min-h-screen flex-col bg-gradient-to-t from-neutral-200 to-neutral-200 dark:from-neutral-900 dark:to-zinc-900">
-                <Header />
-                <main className="flex-grow">{children}</main>
-                <Footer />
-              </div>
-            </ThemeProvider>
-          </UIProvider>
+          <CartProvider>
+            <UIProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                <div className="flex min-h-screen flex-col bg-gradient-to-t from-neutral-200 to-neutral-200 dark:from-neutral-900 dark:to-zinc-900">
+                  <Header />
+                  <main className="flex-grow">{children}</main>
+                  <Footer />
+                </div>
+              </ThemeProvider>
+            </UIProvider>
+          </CartProvider>
         </AuthProvider>
       </body>
     </html>
