@@ -62,7 +62,7 @@ export default function Header() {
             />
           </SheetTrigger>
 
-          <SheetContent side={"right"} className="overflow-y-auto">
+          <SheetContent side={"left"} className="overflow-y-auto">
             <SheetHeader className="flex items-center">
               <Chip
                 startContent={<HiShoppingCart size={20} />}
