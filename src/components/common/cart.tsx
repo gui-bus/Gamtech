@@ -6,7 +6,7 @@ import { computeProductTotalPrice } from "@/helpers/product";
 const Cart = () => {
   const { products } = useContext(CartContext);
   return (
-    <div className="my-5 flex flex-col gap-2">
+    <div className="my-5 flex flex-col gap-2 overflow-y-auto">
       {products.map((product) => (
         <CartItem
           key={product.id}

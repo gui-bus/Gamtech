@@ -63,15 +63,15 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         }),
       );
 
-      toast.success(`Produto adicionado!`, {
-        style: { fontSize: "0.7rem" },
+      toast.success(`Produto adicionado ao carrinho!`, {
+        style: { fontSize: "0.8rem" },
       });
       return;
     }
 
     setProducts((prev) => [...prev, product]);
-    toast.success(`Produto adicionado!`, {
-      style: { fontSize: "0.7rem" },
+    toast.success(`Produto adicionado ao carrinho!`, {
+      style: { fontSize: "0.8rem" },
     });
   };
 
@@ -94,8 +94,8 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
       // Verifique se um item foi removido
       if (!itemRemoved && newProducts.length < prev.length) {
         itemRemoved = true;
-        toast.success(`Produto removido!`, {
-          style: { fontSize: "0.7rem" },
+        toast.success(`Produto removido do carrinho!`, {
+          style: { fontSize: "0.8rem" },
         });
       }
 
