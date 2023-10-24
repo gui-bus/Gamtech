@@ -1,54 +1,59 @@
 "use client";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
 import { Product } from "@prisma/client";
 import ProductItem from "../common/productItem";
 import { computeProductTotalPrice } from "@/helpers/product";
-import { useEffect, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import { FaCircleChevronRight, FaCircleChevronLeft } from "react-icons/fa6";
+import { Button } from "@nextui-org/react";
 
 interface ProductListProps {
   products: Product[];
 }
 
 const ProductList = ({ products }: ProductListProps) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  const handleWheelScroll = (e: React.WheelEvent<HTMLDivElement>) => {
-    if (containerRef.current) {
-      const scrollAmount = e.deltaY;
-      containerRef.current.scrollLeft += scrollAmount;
-    }
-  };
-
-  const handleHover = () => {
-    window.addEventListener("wheel", preventScroll, { passive: false });
-  };
-
-  const handleHoverExit = () => {
-    window.removeEventListener("wheel", preventScroll);
-  };
-
-  const preventScroll = (e: WheelEvent) => {
-    e.preventDefault();
-  };
-
-  useEffect(() => {
-    return () => {
-      window.removeEventListener("wheel", preventScroll);
-    };
-  }, []);
-
   return (
-    <div
-      className="flex w-full gap-4 overflow-x-auto px-5 scrollbar-track-white scrollbar-thumb-[#727272] dark:scrollbar-thumb-[#22222a] md:scrollbar-thin"
-      onWheel={handleWheelScroll}
-      ref={containerRef}
-      onMouseEnter={handleHover}
-      onMouseLeave={handleHoverExit}
-    >
-      {products.map((product) => (
-        <div key={product.id} className="mb-8">
-          <ProductItem product={computeProductTotalPrice(product)} />
+    <div className="w-full select-none px-2">
+      <Swiper
+        className="my-swiper-1"
+        slidesPerView={"auto"}
+        navigation={{
+          enabled: true,
+          prevEl: ".swiper-button-prev",
+          nextEl: ".swiper-button-next",
+        }}
+        modules={[Navigation]}
+      >
+        <div className="swiper-button-prev">
+          <Button
+            isIconOnly
+            variant="shadow"
+            className="rounded-full"
+            startContent={<FaCircleChevronLeft />}
+          />
         </div>
-      ))}
+        {products.map((product) => (
+          <SwiperSlide style={{ width: "fit-content" }} key={product.id}>
+            <ProductItem
+              key={product.id}
+              product={computeProductTotalPrice(product)}
+            />
+          </SwiperSlide>
+        ))}
+        <div className="swiper-button-next">
+          <Button
+            isIconOnly
+            variant="shadow"
+            className="rounded-full"
+            startContent={<FaCircleChevronRight />}
+          />
+        </div>
+      </Swiper>
     </div>
   );
 };
