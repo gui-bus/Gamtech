@@ -1,5 +1,6 @@
 "use client";
 import { ProductWithTotalPrice } from "@/helpers/product";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ReactNode, createContext, useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -38,7 +39,10 @@ export const CartContext = createContext<ICartContext>({
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [products, setProducts] = useState<CartProduct[]>([]);
+  const [products, setProducts] = useLocalStorage<CartProduct[]>(
+    "@fsw-store/cart-products",
+    [],
+  );
   const [uniqueProductIds, setUniqueProductIds] = useState<Set<string>>(
     new Set(),
   );
@@ -47,7 +51,11 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     setProducts(
       JSON.parse(localStorage.getItem("@gamtech/cart-products") || "[]"),
     );
-  }, []);
+  }, [setProducts]);
+
+  useEffect(() => {
+    setUniqueProductIds(new Set(products.map((product) => product.id)));
+  }, [products]);
 
   useEffect(() => {
     localStorage.setItem("@gamtech/cart-products", JSON.stringify(products));
@@ -109,7 +117,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   const numTotalItems = uniqueProductIds.size;
 
   const decreaseProductQuantity = (productId: string) => {
-    let itemRemoved = false; 
+    let itemRemoved = false;
 
     setProducts((prev) => {
       const newProducts = prev
