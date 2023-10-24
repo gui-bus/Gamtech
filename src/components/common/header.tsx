@@ -20,10 +20,13 @@ import { useTheme } from "next-themes";
 
 import Image from "next/image";
 import Cart from "./cart";
+import { CartContext } from "@/providers/cart";
 
 export default function Header() {
   const { setTheme, theme } = useTheme();
   const { status, data } = useSession();
+
+  const { numTotalItems } = useContext(CartContext);
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -52,15 +55,24 @@ export default function Header() {
         </Link>
       </NavbarContent>
 
-      <NavbarContent as="div" justify="end" className="flex items-center gap-4">
+      <NavbarContent as="div" justify="end" className="flex items-center gap-6">
         <Sheet>
-          <SheetTrigger asChild>
-            <Button
-              variant="light"
-              isIconOnly
-              startContent={<HiShoppingCart size={24} />}
-            />
-          </SheetTrigger>
+          <div className="relative">
+            <SheetTrigger asChild>
+              <Button
+                variant="light"
+                isIconOnly
+                startContent={<HiShoppingCart size={28} />}
+              />
+            </SheetTrigger>
+            <div className={`${numTotalItems >= 1 ? 'block' : 'hidden'} cursor-default select-none`}>
+              <div className="absolute -top-1 left-6">
+                <p className="flex h-2 w-2 items-center justify-center rounded-full bg-gamtech p-3 text-xs text-white">
+                  {numTotalItems}
+                </p>
+              </div>
+            </div>
+          </div>
 
           <SheetContent side={"left"} className="overflow-y-auto">
             <SheetHeader className="flex items-center">

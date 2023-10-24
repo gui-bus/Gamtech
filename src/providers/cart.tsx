@@ -12,10 +12,10 @@ interface ICartContext {
   cartTotalPrice: number;
   cartBasePrice: number;
   cartTotalDiscount: number;
-  cartTotalItems: number;
   total: number;
   subtotal: number;
   totalDiscount: number;
+  numTotalItems: number;
   AddProductsToCart: (product: CartProduct) => void;
   decreaseProductQuantity: (productId: string) => void;
   increaseProductQuantity: (productId: string) => void;
@@ -27,10 +27,10 @@ export const CartContext = createContext<ICartContext>({
   cartBasePrice: 0,
   cartTotalDiscount: 0,
   cartTotalPrice: 0,
-  cartTotalItems: 0,
   total: 0,
   subtotal: 0,
   totalDiscount: 0,
+  numTotalItems: 0,
   AddProductsToCart: () => {},
   decreaseProductQuantity: () => {},
   increaseProductQuantity: () => {},
@@ -39,6 +39,9 @@ export const CartContext = createContext<ICartContext>({
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<CartProduct[]>([]);
+  const [uniqueProductIds, setUniqueProductIds] = useState<Set<string>>(
+    new Set(),
+  );
 
   useEffect(() => {
     setProducts(
@@ -91,33 +94,45 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         style: { fontSize: "0.8rem" },
         duration: 700,
       });
-      return;
-    }
+    } else {
+      // Adicione o ID único do produto ao conjunto uniqueProductIds.
+      setUniqueProductIds((prevIds) => new Set([...prevIds, product.id]));
 
-    setProducts((prev) => [...prev, product]);
-    toast.success(`Produto adicionado ao carrinho!`, {
-      style: { fontSize: "0.8rem" },
-      duration: 700,
-    });
+      setProducts((prev) => [...prev, product]);
+      toast.success(`Produto adicionado ao carrinho!`, {
+        style: { fontSize: "0.8rem" },
+        duration: 700,
+      });
+    }
   };
 
+  const numTotalItems = uniqueProductIds.size;
+  console.log(numTotalItems);
+
   const decreaseProductQuantity = (productId: string) => {
-    let itemRemoved = false; // Variável de controle
+    let itemRemoved = false; 
 
     setProducts((prev) => {
       const newProducts = prev
         .map((cartProduct) => {
           if (cartProduct.id === productId) {
+            const newQuantity = cartProduct.quantity - 1;
+            if (newQuantity === 0) {
+              setUniqueProductIds((prevIds) => {
+                const newIds = new Set(prevIds);
+                newIds.delete(productId);
+                return newIds;
+              });
+            }
             return {
               ...cartProduct,
-              quantity: cartProduct.quantity - 1,
+              quantity: newQuantity,
             };
           }
           return cartProduct;
         })
         .filter((cartProduct) => cartProduct.quantity > 0);
 
-      // Verifique se um item foi removido
       if (!itemRemoved && newProducts.length < prev.length) {
         itemRemoved = true;
         toast.success(`Produto removido do carrinho!`, {
@@ -149,9 +164,21 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     toast.success(`Produto removido!`, {
       style: { fontSize: "0.7rem" },
     });
-    setProducts((prev) =>
-      prev.filter((cartProduct) => cartProduct.id !== productId),
-    );
+
+    setProducts((prev) => {
+      const productToRemove = prev.find(
+        (cartProduct) => cartProduct.id === productId,
+      );
+
+      if (productToRemove) {
+        setUniqueProductIds((prevIds) => {
+          const newIds = new Set(prevIds);
+          newIds.delete(productId);
+          return newIds;
+        });
+      }
+      return prev.filter((cartProduct) => cartProduct.id !== productId);
+    });
   };
 
   return (
@@ -162,13 +189,13 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         cartBasePrice: 0,
         cartTotalDiscount: 0,
         cartTotalPrice: 0,
-        cartTotalItems: 0,
         total,
         subtotal,
         totalDiscount,
         decreaseProductQuantity,
         increaseProductQuantity,
         removeProductFromCart,
+        numTotalItems,
       }}
     >
       {children}
