@@ -1,6 +1,6 @@
 "use client";
 import { ProductWithTotalPrice } from "@/helpers/product";
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 
 export interface CartProduct extends ProductWithTotalPrice {
@@ -13,6 +13,9 @@ interface ICartContext {
   cartBasePrice: number;
   cartTotalDiscount: number;
   cartTotalItems: number;
+  total: number;
+  subtotal: number;
+  totalDiscount: number;
   AddProductsToCart: (product: CartProduct) => void;
   decreaseProductQuantity: (productId: string) => void;
   increaseProductQuantity: (productId: string) => void;
@@ -25,6 +28,9 @@ export const CartContext = createContext<ICartContext>({
   cartTotalDiscount: 0,
   cartTotalPrice: 0,
   cartTotalItems: 0,
+  total: 0,
+  subtotal: 0,
+  totalDiscount: 0,
   AddProductsToCart: () => {},
   decreaseProductQuantity: () => {},
   increaseProductQuantity: () => {},
@@ -43,6 +49,24 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     localStorage.setItem("@gamtech/cart-products", JSON.stringify(products));
   }, [products]);
+
+  // Without discount
+  const subtotal = useMemo(() => {
+    return products.reduce((acc, product) => {
+      return acc + Number(product.basePrice) * product.quantity;
+    }, 0);
+  }, [products]);
+
+  // With discount
+  const total = useMemo(() => {
+    return products.reduce((acc, product) => {
+      return acc + product.totalPrice * product.quantity;
+    }, 0);
+  }, [products]);
+
+  const totalDiscount = useMemo(() => {
+    return subtotal - total;
+  }, [total, subtotal]);
 
   const AddProductsToCart = (product: CartProduct) => {
     const productIsAlreadyOnCart = products.some(
@@ -65,6 +89,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
       toast.success(`Produto adicionado ao carrinho!`, {
         style: { fontSize: "0.8rem" },
+        duration: 700,
       });
       return;
     }
@@ -72,6 +97,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     setProducts((prev) => [...prev, product]);
     toast.success(`Produto adicionado ao carrinho!`, {
       style: { fontSize: "0.8rem" },
+      duration: 700,
     });
   };
 
@@ -96,6 +122,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         itemRemoved = true;
         toast.success(`Produto removido do carrinho!`, {
           style: { fontSize: "0.8rem" },
+          duration: 700,
         });
       }
 
@@ -136,6 +163,9 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         cartTotalDiscount: 0,
         cartTotalPrice: 0,
         cartTotalItems: 0,
+        total,
+        subtotal,
+        totalDiscount,
         decreaseProductQuantity,
         increaseProductQuantity,
         removeProductFromCart,
