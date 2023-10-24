@@ -67,4 +67,20 @@
   .footerLink {
     @apply transition-all group-hover:text-[#1267dc];
   }
+
+  .swiper.swiper-initialized.swiper-horizontal {
+    @apply px-4 -mx-4 md:mx-0 md:px-0
+  }
+
+  .my-swiper-1 .swiper-pagination {
+    @apply static h-5 flex items-center justify-center mt-2
+  }
+
+  .my-swiper-1 .swiper-wrapper {
+    @apply space-x-4
+  } 
+
+  .swiper .swiper-button-prev, .swiper .swiper-button-next {
+    @apply after:hidden invisible md:visible w-10 h-10 -translate-y-10 mt-0
+  }
 }

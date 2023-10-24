@@ -36,6 +36,7 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "stripe": "^14.1.0",
+    "swiper": "^11.0.1",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7"
   },
