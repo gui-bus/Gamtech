@@ -2,7 +2,7 @@
 import { Product } from "@prisma/client";
 import ProductItem from "../common/productItem";
 import { computeProductTotalPrice } from "@/helpers/product";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 interface ProductListProps {
   products: Product[];
@@ -29,6 +29,12 @@ const ProductList = ({ products }: ProductListProps) => {
   const preventScroll = (e: WheelEvent) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    return () => {
+      window.removeEventListener("wheel", preventScroll);
+    };
+  }, []);
 
   return (
     <div
