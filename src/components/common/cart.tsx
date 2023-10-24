@@ -2,26 +2,26 @@ import { CartContext } from "@/providers/cart";
 import React, { useContext } from "react";
 import CartItem from "../cart/cartItem";
 import { computeProductTotalPrice } from "@/helpers/product";
-import { Button, Link } from "@nextui-org/react";
+import { Button, Link, Tooltip } from "@nextui-org/react";
 import { TbCategory2 } from "react-icons/tb";
 import { Separator } from "../ui/separator";
 import { AiOutlineSafety } from "react-icons/ai";
 import { createCheckout } from "@/actions/checkout";
-import { loadStripe } from '@stripe/stripe-js'
+import { loadStripe } from "@stripe/stripe-js";
+import { useSession } from "next-auth/react";
 
 const Cart = () => {
   const { products, subtotal, total, totalDiscount } = useContext(CartContext);
+  const { status, data } = useSession();
 
   const handleFinishPurchaseClick = async () => {
     const checkout = await createCheckout(products);
 
-    const stripe = await loadStripe(
-      process.env.NEXT_PUBLIC_STRIPE_KEY
-    )
+    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
     stripe?.redirectToCheckout({
-      sessionId: checkout.id
-    })
+      sessionId: checkout.id,
+    });
   };
 
   return (
@@ -100,16 +100,50 @@ const Cart = () => {
             </p>
           </div>
 
-          <Button
-            variant="shadow"
-            color="primary"
-            radius="sm"
-            className="font-bold uppercase"
-            endContent={<AiOutlineSafety size={24} />}
-            onClick={handleFinishPurchaseClick}
-          >
-            Finalizar compra
-          </Button>
+          <div className="w-full max-w-xl">
+            {status === "authenticated" && data?.user ? (
+              <Button
+                variant="shadow"
+                color="primary"
+                radius="sm"
+                className="font-bold uppercase w-full"
+                endContent={<AiOutlineSafety size={24} />}
+                onClick={handleFinishPurchaseClick}
+              >
+                Finalizar compra
+              </Button>
+            ) : (
+              <Tooltip
+                content={
+                  <p className="cursor-default text-center font-bold">
+                    Oops! Para finalizar a compra é necessário fazer login.
+                  </p>
+                }
+                delay={0}
+                closeDelay={0}
+                color="primary"
+                placement="top"
+                radius="sm"
+                className="hidden w-full max-w-xs lg:block"
+              >
+                <div className="w-full cursor-not-allowed">
+                  <Button
+                    variant="shadow"
+                    color="primary"
+                    radius="sm"
+                    className="font-bold uppercase w-full"
+                    endContent={<AiOutlineSafety size={24} />}
+                    isDisabled
+                  >
+                    Finalizar compra
+                  </Button>
+                  <p className="mt-2 text-center text-sm text-red-500 opacity-80 lg:hidden">
+                    Para finalizar a compra é necessário fazer login.
+                  </p>
+                </div>
+              </Tooltip>
+            )}
+          </div>
         </div>
       )}
     </div>
