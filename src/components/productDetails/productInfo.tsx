@@ -119,7 +119,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
               color="primary"
               placement="bottom"
               radius="sm"
-              className="w-full max-w-xs"
+              className="w-full max-w-xs hidden lg:block"
             >
               <div className="w-full cursor-not-allowed">
                 <Button
@@ -131,6 +131,9 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
                 >
                   Adicionar ao carrinho
                 </Button>
+                <p className="text-red-500 opacity-80 text-sm text-center mt-2 lg:hidden">
+                  Para adicionar este item ao carrinho é necessário fazer login
+                </p>
               </div>
             </Tooltip>
           )}
