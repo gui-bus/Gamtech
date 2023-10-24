@@ -6,9 +6,24 @@ import { Button, Link } from "@nextui-org/react";
 import { TbCategory2 } from "react-icons/tb";
 import { Separator } from "../ui/separator";
 import { AiOutlineSafety } from "react-icons/ai";
+import { createCheckout } from "@/actions/checkout";
+import { loadStripe } from '@stripe/stripe-js'
 
 const Cart = () => {
   const { products, subtotal, total, totalDiscount } = useContext(CartContext);
+
+  const handleFinishPurchaseClick = async () => {
+    const checkout = await createCheckout(products);
+
+    const stripe = await loadStripe(
+      process.env.NEXT_PUBLIC_STRIPE_KEY
+    )
+
+    stripe?.redirectToCheckout({
+      sessionId: checkout.id
+    })
+  };
+
   return (
     <div className="relative">
       <div className="my-5 flex flex-col gap-2 overflow-hidden">
@@ -91,6 +106,7 @@ const Cart = () => {
             radius="sm"
             className="font-bold uppercase"
             endContent={<AiOutlineSafety size={24} />}
+            onClick={handleFinishPurchaseClick}
           >
             Finalizar compra
           </Button>

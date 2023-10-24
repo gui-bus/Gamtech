@@ -107,7 +107,6 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const numTotalItems = uniqueProductIds.size;
-  console.log(numTotalItems);
 
   const decreaseProductQuantity = (productId: string) => {
     let itemRemoved = false; 
