@@ -63,7 +63,7 @@ export function Filter({ products, category, title }: FilterProps) {
         </p>
         <Dropdown>
           <DropdownTrigger>
-            <Button variant="faded" endContent={<ChevronDown size={20} />}>
+            <Button variant="faded" endContent={<ChevronDown size={32} />} className="">
               Filtrar por
             </Button>
           </DropdownTrigger>
