@@ -12,6 +12,7 @@ import { TbCategory2 } from "react-icons/tb";
 import { Separator } from "../ui/separator";
 
 import { BANNER_LINK } from "@/constants/bannerLink";
+import ProductSearch from "../common/productSearch";
 
 export default async function DesktopUI() {
   const categories = await prismaClient.category.findMany({});
@@ -150,36 +151,11 @@ export default async function DesktopUI() {
           priority
         />
 
-        <div className="flex flex-wrap items-center justify-center gap-2 pt-5">
-          <Sheet>
-            <div className="w-full max-w-xl px-5">
-              <SheetTrigger asChild>
-                <Button
-                  className="w-full"
-                  endContent={<TbCategory2 size={20} />}
-                >
-                  Ver categorias
-                </Button>
-              </SheetTrigger>
-
-              <Separator className="mt-5" />
-            </div>
-
-            <SheetContent side={"bottom"}>
-              <SheetHeader>
-                <h1 className="mx-auto mb-4 text-lg font-semibold">
-                  Categorias
-                </h1>
-              </SheetHeader>
-
-              <div className="flex flex-wrap items-center justify-center gap-2">
-                {categories.map((category) => (
-                  <CategoryList key={category.id} category={category} />
-                ))}
-              </div>
-            </SheetContent>
-          </Sheet>
+        <div className="mx-auto mt-4 w-full max-w-xl px-5">
+          <ProductSearch />
         </div>
+
+        
 
         <section className="my-5">
           <div className="hidden md:block">
@@ -199,7 +175,6 @@ export default async function DesktopUI() {
         products={cpuAndMotherboards}
         description="Extraia o potencial máximo da sua máquina."
       />
-
 
       <DesktopBannerSection images={mousesAndKeyboardsBanner} />
       <DesktopProductListSection

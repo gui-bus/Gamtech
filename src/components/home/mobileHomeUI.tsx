@@ -10,6 +10,7 @@ import { Button } from "@nextui-org/react";
 
 import { TbCategory2 } from "react-icons/tb";
 import { Separator } from "../ui/separator";
+import ProductSearch from "../common/productSearch";
 
 export default async function MobileUI() {
   const categories = await prismaClient.category.findMany({});
@@ -49,7 +50,10 @@ export default async function MobileUI() {
     "gamepads",
   ]);
 
-  const cpuAndMotherboard = await fetchProductsByCategories(["cpu", "motherboards"]);
+  const cpuAndMotherboard = await fetchProductsByCategories([
+    "cpu",
+    "motherboards",
+  ]);
 
   async function fetchProductsByDiscount() {
     return await prismaClient.product.findMany({
@@ -66,7 +70,6 @@ export default async function MobileUI() {
 
   const deals = await fetchProductsByDiscount();
 
-
   return (
     <main>
       <div className="md:hidden">
@@ -81,35 +84,9 @@ export default async function MobileUI() {
             priority
           />
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-2 pt-5">
-          <Sheet>
-            <div className="w-full px-5">
-              <SheetTrigger asChild>
-                <Button
-                  className="w-full"
-                  endContent={<TbCategory2 size={20} />}
-                >
-                  Ver categorias
-                </Button>
-              </SheetTrigger>
 
-              <Separator className="mt-5" />
-            </div>
-
-            <SheetContent side={"bottom"}>
-              <SheetHeader>
-                <h1 className="mx-auto mb-4 text-lg font-semibold">
-                  Categorias
-                </h1>
-              </SheetHeader>
-
-              <div className="flex flex-wrap items-center justify-center gap-2">
-                {categories.map((category) => (
-                  <CategoryList key={category.id} category={category} />
-                ))}
-              </div>
-            </SheetContent>
-          </Sheet>
+        <div className="mx-auto mt-4 w-full max-w-xl px-5">
+          <ProductSearch />
         </div>
 
         <section className="my-5">
