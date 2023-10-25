@@ -8,6 +8,7 @@ import Image from "next/image";
 
 import { TbDiscount2 } from "react-icons/tb";
 import { BANNER_LINK } from "@/constants/bannerLink";
+import { Filter } from "@/components/category/slug/filter";
 
 const PromoPage = async () => {
   const deals = await prismaClient.product.findMany({
@@ -56,13 +57,8 @@ const PromoPage = async () => {
         </Chip>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 px-5 pb-8 pt-3 md:grid-cols-3 xl:grid-cols-6">
-        {deals.map((product) => (
-          <CategoryProductItem
-            key={product.id}
-            product={computeProductTotalPrice(product)}
-          />
-        ))}
+      <div className="w-full mx-auto px-5">
+        <Filter title="Ofertas" products={deals}/>
       </div>
     </div>
   );

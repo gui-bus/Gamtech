@@ -1,7 +1,6 @@
-import CategoryProductItem from "@/components/categories/categoryProductItem";
+import { Filter } from "@/components/category/slug/filter";
 import BackButton from "@/components/common/backButton";
 import { CATEGORY_ICON } from "@/constants/categoryIcon";
-import { computeProductTotalPrice } from "@/helpers/product";
 import { prismaClient } from "@/lib/prisma";
 import { Chip } from "@nextui-org/react";
 import React from "react";
@@ -37,13 +36,10 @@ const CategoryProduct = async ({ params }: any) => {
         </Chip>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 py-8 md:grid-cols-3 xl:grid-cols-6">
-        {category?.products.map((product) => (
-          <CategoryProductItem
-            key={product.id}
-            product={computeProductTotalPrice(product)}
-          />
-        ))}
+      <div className="mx-auto w-full">
+        <div className="mt-5">
+          <Filter category={category} products={category.products} />
+        </div>
       </div>
     </div>
   );
