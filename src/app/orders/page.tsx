@@ -1,32 +1,50 @@
+"use client";
 import BackButton from "@/components/common/backButton";
 import OrderItem from "@/components/orders/orderItem";
-import { authOptions } from "@/lib/auth";
-import { prismaClient } from "@/lib/prisma";
 import { Button, Chip, Link } from "@nextui-org/react";
-import { LuPackageCheck } from 'react-icons/lu'
-import { getServerSession } from "next-auth";
-import React from "react";
+import { LuPackageCheck } from "react-icons/lu";
+import React, { useEffect, useState } from "react";
 import { TbCategory2 } from "react-icons/tb";
+import { useSession } from "next-auth/react";
+import { Prisma } from "@prisma/client";
+import { useRouter } from "next/navigation";
 
-async function OrderPage() {
-  const user = getServerSession(authOptions);
+const OrderPage = () => {
+  const [orders, setOrders] = useState<
+    Prisma.OrderGetPayload<{
+      include: {
+        orderProducts: {
+          include: {
+            product: true;
+            order: {
+              include: {
+                orderProducts: true;
+              };
+            };
+          };
+        };
+      };
+    }>[]
+  >([]);
+  const { status, data } = useSession();
+  const router = useRouter();
 
-  if (!user) {
-    return <p>Access Denied</p>;
-  }
+  const fetchOrders = async () => {
+    const response = await fetch(`/api/user/${(data?.user as any)?.id}/orders`);
+    const json = await response.json();
 
-  const orders = await prismaClient.order.findMany({
-    where: {
-      userId: (user as any).id,
-    },
-    include: {
-      orderProducts: {
-        include: {
-          product: true,
-        },
-      },
-    },
-  });
+    setOrders(json);
+    console.log(json);
+  };
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      return router.push("/");
+    }
+
+    fetchOrders();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
 
   return (
     <div>
@@ -56,7 +74,7 @@ async function OrderPage() {
           </h4>
           <p>Que tal fazer umas compras?</p>
 
-          <Link href="/categories" className="mx-auto mt-4 w-full">
+          <Link href="/categories" className="mx-auto mt-4 w-full max-w-xl">
             <Button
               endContent={<TbCategory2 size={20} />}
               className="w-full font-semibold"
@@ -70,6 +88,6 @@ async function OrderPage() {
       )}
     </div>
   );
-}
+};
 
 export default OrderPage;
