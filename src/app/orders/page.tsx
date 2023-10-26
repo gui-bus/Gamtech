@@ -2,12 +2,13 @@
 import BackButton from "@/components/common/backButton";
 import OrderItem from "@/components/orders/orderItem";
 import { Button, Chip, Link } from "@nextui-org/react";
-import { LuPackageCheck } from "react-icons/lu";
+import { PiPackageBold } from "react-icons/pi";
 import React, { useEffect, useState } from "react";
 import { TbCategory2 } from "react-icons/tb";
 import { useSession } from "next-auth/react";
 import { Prisma } from "@prisma/client";
 import { useRouter } from "next/navigation";
+import { RxReload } from "react-icons/rx";
 
 const OrderPage = () => {
   const [orders, setOrders] = useState<
@@ -51,7 +52,6 @@ const OrderPage = () => {
       <div className="flex items-center justify-start gap-2 p-5">
         <BackButton />
         <Chip
-          startContent={<LuPackageCheck size={20} />}
           color="primary"
           variant="bordered"
           className="cursor-default p-[1.125rem] text-black dark:text-white"
@@ -68,22 +68,38 @@ const OrderPage = () => {
           ))}
         </div>
       ) : (
-        <div className="my-5 flex flex-col items-center justify-center text-center">
-          <h4 className="font-semibold">
-            Você ainda não possui nenhum pedido!
-          </h4>
-          <p>Que tal fazer umas compras?</p>
+        <div className="mx-auto mt-16 flex max-w-2xl flex-col items-center justify-center gap-1 px-4 text-center">
+          <h1 className="font-semibold">
+            Oops! Parece que você ainda não possui nenhuma pedido!
+          </h1>
+          <p>Que tal dar uma olhada nas opçoes?</p>
+          <p className="text-tiny">
+            Caso possua um pedido que ainda não está sendo exibido, atualize a
+            sua lista!
+          </p>
 
-          <Link href="/categories" className="mx-auto mt-4 w-full max-w-xl">
+          <div className="flex flex-col items-center justify-center gap-4 md:flex-row pb-16">
+            <Link href="/categories" className="mx-auto w-full max-w-xl">
+              <Button
+                endContent={<TbCategory2 size={20} />}
+                className="w-full font-semibold"
+                variant="shadow"
+                color="primary"
+              >
+                Ver catálogo de produtos
+              </Button>
+            </Link>
+
             <Button
-              endContent={<TbCategory2 size={20} />}
+              endContent={<RxReload size={20} />}
               className="w-full font-semibold"
               variant="shadow"
               color="primary"
+              onClick={fetchOrders}
             >
-              Ver catálogo de produtos
+              Atualizar lista de pedidos
             </Button>
-          </Link>
+          </div>
         </div>
       )}
     </div>
