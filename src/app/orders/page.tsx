@@ -3,7 +3,7 @@ import OrderItem from "@/components/orders/orderItem";
 import { authOptions } from "@/lib/auth";
 import { prismaClient } from "@/lib/prisma";
 import { Button, Chip, Link } from "@nextui-org/react";
-import { PackageCheck } from "lucide-react";
+import { LuPackageCheck } from 'react-icons/lu'
 import { getServerSession } from "next-auth";
 import React from "react";
 import { TbCategory2 } from "react-icons/tb";
@@ -20,7 +20,11 @@ async function OrderPage() {
       userId: (user as any).id,
     },
     include: {
-      orderProducts: true,
+      orderProducts: {
+        include: {
+          product: true,
+        },
+      },
     },
   });
 
@@ -29,7 +33,7 @@ async function OrderPage() {
       <div className="flex items-center justify-start gap-2 p-5">
         <BackButton />
         <Chip
-          startContent={<PackageCheck size={20} />}
+          startContent={<LuPackageCheck size={20} />}
           color="primary"
           variant="bordered"
           className="cursor-default p-[1.125rem] text-black dark:text-white"
