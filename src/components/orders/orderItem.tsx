@@ -20,6 +20,25 @@ interface OrderItemProps {
 }
 
 const OrderItem = ({ order }: OrderItemProps) => {
+  const orderDate = new Date(order.createdAt);
+
+  const timeOptions = {
+    hour: "2-digit",
+    minute: "2-digit",
+  };
+
+  const dayOptions = {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  };
+
+  const timeOrder = new Intl.DateTimeFormat("pt-BR", timeOptions as any);
+  const dayOrder = new Intl.DateTimeFormat("pt-BR", dayOptions as any);
+  
+  const formattedTime = timeOrder.format(orderDate);
+  const formattedDay = dayOrder.format(orderDate);
+
   const subtotal = useMemo(() => {
     return order.orderProducts.reduce((acc, orderProduct) => {
       return (
@@ -43,15 +62,11 @@ const OrderItem = ({ order }: OrderItemProps) => {
       <AccordionItem
         key="1"
         aria-label="Accordion 1"
-        subtitle={
-          <p className="text-tiny opacity-80">
-            Pedido feito em {format(order.createdAt, "d/MM/y 'ás' HH:mm")}
-          </p>
-        }
+        subtitle={<p className="text-tiny opacity-80">Pedido realiado em {formattedDay} às {formattedTime}</p>}
         title={
-          <h5 className="text-sm font-semibold">{`Pedido com ${order.orderProducts.length} ${
-            order.orderProducts.length > 1 ? "produtos" : "produto"
-          }`}</h5>
+          <h5 className="text-sm font-semibold">{`Pedido com ${
+            order.orderProducts.length
+          } ${order.orderProducts.length > 1 ? "produtos" : "produto"}`}</h5>
         }
       >
         <Divider className="mb-5" />
@@ -80,7 +95,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
                 Data <span className="hidden lg:block">-</span>
               </p>
               <p className="opacity-90 dark:opacity-70">
-                {format(order.createdAt, "dd/MM/y")}
+                {formattedDay}
               </p>
             </div>
 
