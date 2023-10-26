@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import {
   Navbar,
   NavbarContent,
@@ -11,7 +11,7 @@ import {
 } from "@nextui-org/react";
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
 import { Separator } from "../ui/separator";
-import { HiShoppingCart, HiSun, HiMoon, HiShoppingBag } from "react-icons/hi2";
+import { HiShoppingCart, HiSun, HiMoon } from "react-icons/hi2";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { TbDiscount2, TbCategory2, TbHomeMove } from "react-icons/tb";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -21,6 +21,7 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Cart from "./cart";
 import { CartContext } from "@/providers/cart";
+import { PackageCheck } from "lucide-react";
 
 export default function Header() {
   const { setTheme, theme } = useTheme();
@@ -181,13 +182,15 @@ export default function Header() {
               </div>
 
               {status === "authenticated" && data.user && (
-                <Button
-                  color="default"
-                  className="hoverButton w-full"
-                  endContent={<HiShoppingBag size={20} />}
-                >
-                  Meus pedidos
-                </Button>
+                <Link href="/orders">
+                  <Button
+                    color="default"
+                    className="hoverButton w-full"
+                    endContent={<PackageCheck size={20} />}
+                  >
+                    Meus pedidos
+                  </Button>
+                </Link>
               )}
             </div>
 
