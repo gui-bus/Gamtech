@@ -78,7 +78,7 @@ const OrderPage = () => {
             sua lista!
           </p>
 
-          <div className="flex flex-col items-center justify-center gap-4 md:flex-row pb-16">
+          <div className="flex flex-col items-center justify-center gap-4 md:flex-row pb-16 pt-4">
             <Link href="/categories" className="mx-auto w-full max-w-xl">
               <Button
                 endContent={<TbCategory2 size={20} />}
