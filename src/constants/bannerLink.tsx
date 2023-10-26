@@ -2,21 +2,21 @@ export const BANNER_LINK = {
   banner_case:
     "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-case.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNhc2UucG5nIiwiaWF0IjoxNjk3OTEyNjg0LCJleHAiOjI1NjE4MjYyODR9.wO3BPsl7gifW1Oix_RWLWu-jiniFjpWlZDK11SRkSVU&t=2023-10-21T18%3A24%3A00.218Z",
   banner_fretegratis:
-    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-fretegratis.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWZyZXRlZ3JhdGlzLnBuZyIsImlhdCI6MTY5NzkxMzAwMiwiZXhwIjoyNTYxODI2NjAyfQ.65ea1mEK8frO8wquI5eh4RrB3-08HVpwIHZoY2NifzE&t=2023-10-21T18%3A29%3A17.821Z",
+    "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-fretegratis.webp?alt=media&token=90305b4f-0fc3-45e3-9ea6-53592ba97108&_gl=1*mycax*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjM4OC44LjAuMA..",
   banner_fretemobile:
-    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-fretemobile.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWZyZXRlbW9iaWxlLnBuZyIsImlhdCI6MTY5NzkxMzA0MCwiZXhwIjoyNTYxODI2NjQwfQ.pYLULGsNy34Ulpt3ZsGGj3TH981w-1YQyduPKjiJvfo&t=2023-10-21T18%3A29%3A55.845Z",
+    "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-fretemobile.webp?alt=media&token=e1e57be0-c52b-4dd0-bfbf-4a5d991d34fe&_gl=1*1i1otyn*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjQwMy42MC4wLjA.",
   banner_gpu:
-    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-gpu.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWdwdS5wbmciLCJpYXQiOjE2OTc5MTU3ODgsImV4cCI6MjU2MTgyOTM4OH0.Ou6KErrOrQzhvVGcL0_1VORz_gpGoor4RIaC8qOSowg&t=2023-10-21T19%3A15%3A44.337Z",
+    "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-gpu.webp?alt=media&token=84ce143b-46cf-4274-acef-95d6f1be053b&_gl=1*7gk5wb*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjQxMC41My4wLjA.",
   banner_headphones:
     "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-headphones.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWhlYWRwaG9uZXMucG5nIiwiaWF0IjoxNjk3OTEzMTExLCJleHAiOjI1NjE4MjY3MTF9.mgT3xKYbJOBUHjRLEGLfypSApWfMHBo-TVhPn0kBt2M&t=2023-10-21T18%3A31%3A07.294Z",
   banner_keyboards:
-    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-keyboards.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWtleWJvYXJkcy5wbmciLCJpYXQiOjE2OTc5MTMxMzEsImV4cCI6MjU2MTgyNjczMX0.mqxVNyLIJIQARuLEyYXepvpE0IYQAJ0Rfm0j-6J-bps&t=2023-10-21T18%3A31%3A27.640Z",
+    "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-keyboards.webp?alt=media&token=98f76c7f-232a-46e1-bebe-670d700ac236&_gl=1*1g23p4u*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjQzOS4yNC4wLjA.",
   banner_monitors:
     "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-monitors.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLW1vbml0b3JzLnBuZyIsImlhdCI6MTY5NzkxNTgwMiwiZXhwIjoyNTYxODI5NDAyfQ.qwlYtmLZCV_qAugj5nwSn9qrRqpFT84M50LFM2Pm3Uw&t=2023-10-21T19%3A15%3A58.317Z",
   banner_mousepads:
     "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-mousepads.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLW1vdXNlcGFkcy5wbmciLCJpYXQiOjE2OTc5MTUzNzksImV4cCI6MjU2MTgyODk3OX0.5H9QPE943-CxnP_mkYkKStbTJg_OxMF9as5M-fhgqiA&t=2023-10-21T19%3A08%3A55.528Z",
   banner_mouses:
-    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-mouses.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLW1vdXNlcy5wbmciLCJpYXQiOjE2OTc5MTMyMDMsImV4cCI6MjU2MTgyNjgwM30.3fDpO2GRCw9y1YrDB4i0nU0u_uZ4YsOVl8EhpJEuu1U&t=2023-10-21T18%3A32%3A39.536Z",
+    "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-mouses.webp?alt=media&token=bf9441df-4428-4055-9353-60308914b54d&_gl=1*1sb2rgr*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjQ2MS4yLjAuMA..",
   banner_promo:
     "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-promo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLXByb21vLnBuZyIsImlhdCI6MTY5NzkxMzIyNiwiZXhwIjoyNTYxODI2ODI2fQ.tFi4GWDbuHY9VNXRj3s7Owbbx5dIPX7Q53xYsfcnQTE&t=2023-10-21T18%3A33%3A02.422Z",
   banner_promomobile:
@@ -32,7 +32,7 @@ export const BANNER_LINK = {
   banner_gamepads:
     "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-gamepads.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWdhbWVwYWRzLnBuZyIsImlhdCI6MTY5Nzk5ODgwMiwiZXhwIjoyNTYxOTEyNDAyfQ.vVDBU25VQgtDoyR05qNgluRdJ5KhAq92sysKlqC7JbE&t=2023-10-22T18%3A19%3A17.503Z",
   banner_perifericos:
-    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-perifericos.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLXBlcmlmZXJpY29zLnBuZyIsImlhdCI6MTY5ODAwNDUyOCwiZXhwIjoyNTYxOTE4MTI4fQ.uq_ds_zoNwrDE2Lo4s2dV4utNM-vU9k873LgY1-5jZo&t=2023-10-22T19%3A54%3A43.899Z",
+    "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-perifericos.webp?alt=media&token=70caf9a7-4900-48e9-9bf3-30d74c372bfd&_gl=1*4pwhcg*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjQ3MC42MC4wLjA.",
   banner_video:
     "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-video.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLXZpZGVvLnBuZyIsImlhdCI6MTY5ODAwNDY3MywiZXhwIjoyNTYxOTE4MjczfQ.KQyTpKH5rLTGiO427rSGQHsljspA-9F5qtkThBpQma4&t=2023-10-22T19%3A57%3A08.044Z",
   banner_desktop:
@@ -40,19 +40,19 @@ export const BANNER_LINK = {
   banner_audio:
     "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-audio.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWF1ZGlvLnBuZyIsImlhdCI6MTY5ODAwNDY5NiwiZXhwIjoyNTYxOTE4Mjk2fQ.UnaQYFeAxjfEQGnM1uSUWxlAwKmFayT_NSMJdHKpS8Y&t=2023-10-22T19%3A57%3A31.327Z",
   banner_hardware:
-    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-hardware.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWhhcmR3YXJlLnBuZyIsImlhdCI6MTY5ODAwNTE1MSwiZXhwIjoyNTYxOTE4NzUxfQ.6DB287nALjITSQTr-a71hRMOR9yX8o_JSX6msCeSm6E&t=2023-10-22T20%3A05%3A06.766Z",
+    "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-hardware.webp?alt=media&token=24b6d79b-ed0a-40a6-aedc-02b0efc5f647&_gl=1*rdlhr2*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjQyNi4zNy4wLjA.",
   banner_games:
     "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-games.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWdhbWVzLnBuZyIsImlhdCI6MTY5ODAxMTU5NywiZXhwIjoyNTYxOTI1MTk3fQ.VkmFSt6PQ-rkDYDLXEpUIcgu1V3yafMgMjs_Yf-YJo0&t=2023-10-22T21%3A52%3A31.869Z",
   banner_cover:
-    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-cover.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNvdmVyLnBuZyIsImlhdCI6MTY5ODAwNjk0NSwiZXhwIjoyNTYxOTIwNTQ1fQ.QtBB6OK2StVbdODOPOKUmR65qKekSk1h_kcFCfcpWDU&t=2023-10-22T20%3A35%3A00.145Z",
+    "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-cover.webp?alt=media&token=e73ea93b-f1dc-4e30-b411-152fe6995dab&_gl=1*17tlzhv*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjM2NC4zMi4wLjA.",
   banner_cover_mobile:
-    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-cover_mobile.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNvdmVyX21vYmlsZS5wbmciLCJpYXQiOjE2OTgwMDk0NTUsImV4cCI6MjU2MTkyMzA1NX0.9dHGmzBakr3FWNzj2Ui00xcDgtYThJcL7nOiqEd1J60&t=2023-10-22T21%3A16%3A50.616Z",
+    "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-cover_mobile.webp?alt=media&token=1cfc977f-63a0-409c-afa4-1fc3184b7943&_gl=1*9gu9vb*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjM3MS4yNS4wLjA.",
   banner_cover_2:
-    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-cover-2.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNvdmVyLTIucG5nIiwiaWF0IjoxNjk4MDA4NDIxLCJleHAiOjI1NjE5MjIwMjF9.PTkuGfP5vFJswd8gpfCtTPGlfCojiKn0i-2_18rTaDw&t=2023-10-22T20%3A59%3A36.079Z",
+    "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-cover-2.webp?alt=media&token=690e7ac7-6e89-4ef4-8049-dece5dea182a&_gl=1*3nbzm4*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjM0NC41Mi4wLjA.",
   banner_cover_2_mobile:
-    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-cover_2_mobile.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNvdmVyXzJfbW9iaWxlLnBuZyIsImlhdCI6MTY5ODAwOTQ3NywiZXhwIjoyNTYxOTIzMDc3fQ.lRF-OXMxEXkd4CeqUXMBGt621FPIiFI2ffhCTzG3A0U&t=2023-10-22T21%3A17%3A12.210Z",
-    banner_motherboard: "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-motherboard.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLW1vdGhlcmJvYXJkLnBuZyIsImlhdCI6MTY5ODAxMjQyOCwiZXhwIjoyNTYxOTI2MDI4fQ.n5dcRA89TQ_IdCvgrTPujs7gAVqoS2NzLY-4rCkzhw8&t=2023-10-22T22%3A06%3A22.738Z",
-    banner_cpu: "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-cpu.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNwdS5wbmciLCJpYXQiOjE2OTgwMTIzOTcsImV4cCI6MjU2MTkyNTk5N30.fkW1DNkHBkeLuJuGZ0-t7HTvAguQ14p1Q2kvsC3CBqQ&t=2023-10-22T22%3A05%3A51.800Z",
-    banner_catalog: "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-catalog.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNhdGFsb2cucG5nIiwiaWF0IjoxNjk4MDczOTQ3LCJleHAiOjI1NjE5ODc1NDd9.S5sABKsnDc_5nAHTpvZGm9GgpmUtaEmB0yeB57oD0JM&t=2023-10-23T15%3A11%3A40.386Z",
-    banner_catalogmobile: "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-catalogmobile.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWNhdGFsb2dtb2JpbGUucG5nIiwiaWF0IjoxNjk4MDczOTU2LCJleHAiOjI1NjE5ODc1NTZ9.QeNORXamKI7dbpqZM6725yg2tVj9sX7savOvCAM_emg&t=2023-10-23T15%3A11%3A49.531Z",
+    "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-cover_2_mobile.webp?alt=media&token=8f693576-850e-4e07-a1d2-7c5b6e51cf9a&_gl=1*2d6roq*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjM1Ny4zOS4wLjA.",
+    banner_motherboard: "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-motherboard.webp?alt=media&token=785da337-c51a-4b24-b3e0-153cb71832f0&_gl=1*fty3kv*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjQ1Mi4xMS4wLjA.",
+    banner_cpu: "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-cpu.webp?alt=media&token=510f1b93-cb79-4b2d-b59b-77c80ef6a2ba&_gl=1*1pa633k*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjM3OC4xOC4wLjA.",
+    banner_catalog: "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-catalog.webp?alt=media&token=0397ab8d-39f5-43a2-84b4-7fb4fd51cb6a&_gl=1*1k356h7*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjMwOC43LjAuMA..",
+    banner_catalogmobile: "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-catalogmobile.webp?alt=media&token=a6d01209-e793-48eb-850e-ea636b9cef62&_gl=1*1gb1wp1*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjMzNi42MC4wLjA.",
 };

@@ -28,21 +28,11 @@ export default async function DesktopUI() {
     },
   ];
 
-  const speakersAndHeadphonesBanner = [
-    {
-      src: BANNER_LINK.banner_speakers,
-      alt: "Até 10% de desconto em caixas de som",
-    },
+
+  const headsetsAndGpuBanner = [
     {
       src: BANNER_LINK.banner_headphones,
-      alt: "Até 20% de desconto em headphones",
-    },
-  ];
-
-  const monitorsAndGpuBanner = [
-    {
-      src: BANNER_LINK.banner_monitors,
-      alt: "Até 15% de desconto em monitores",
+      alt: "Até 20% de desconto em fones",
     },
     {
       src: BANNER_LINK.banner_gpu,
@@ -50,27 +40,6 @@ export default async function DesktopUI() {
     },
   ];
 
-  const caseAndMousepadsBanner = [
-    {
-      src: BANNER_LINK.banner_case,
-      alt: "Até 20% de desconto em gabinetes",
-    },
-    {
-      src: BANNER_LINK.banner_mousepads,
-      alt: "Até 15% de desconto em mousepads",
-    },
-  ];
-
-  const consolesAndGamepadsBanner = [
-    {
-      src: BANNER_LINK.banner_consoles,
-      alt: "Até 10% de desconto em consoles",
-    },
-    {
-      src: BANNER_LINK.banner_gamepads,
-      alt: "Até 20% de desconto em Controles",
-    },
-  ];
 
   const cpuAndMotherboardsBanner = [
     {
@@ -117,21 +86,7 @@ export default async function DesktopUI() {
     "keyboards",
     "mouses",
   ]);
-  const speakersAndHeadphones = await fetchProductsByCategories([
-    "headphones",
-    "speakers",
-  ]);
-  const monitorsAndGpu = await fetchProductsByCategories(["gpu", "monitors"]);
-
-  const caseAndMousepads = await fetchProductsByCategories([
-    "cases",
-    "mousepads",
-  ]);
-
-  const consolesAndGamepads = await fetchProductsByCategories([
-    "consoles",
-    "gamepads",
-  ]);
+  const headsetsAndGpu = await fetchProductsByCategories(["gpu", "headsets"]);
 
   const cpuAndMotherboards = await fetchProductsByCategories([
     "cpu",
@@ -182,29 +137,12 @@ export default async function DesktopUI() {
         description="Potencialize sua jornada digital com os melhores periféricos."
       />
 
-      <DesktopBannerSection images={monitorsAndGpuBanner} />
+      <DesktopBannerSection images={headsetsAndGpuBanner} />
       <DesktopProductListSection
-        products={monitorsAndGpu}
+        products={headsetsAndGpu}
         description="Encontre a combinação ideal para ter a melhor experiência visual."
       />
-
-      <DesktopBannerSection images={caseAndMousepadsBanner} />
-      <DesktopProductListSection
-        products={caseAndMousepads}
-        description="Explore as possibilidades para aprimorar o seu espaço de trabalho."
-      />
-
-      <DesktopBannerSection images={speakersAndHeadphonesBanner} />
-      <DesktopProductListSection
-        products={speakersAndHeadphones}
-        description="Descubra o que é qualidade de som em nossa coleção."
-      />
-
-      <DesktopBannerSection images={consolesAndGamepadsBanner} />
-      <DesktopProductListSection
-        products={consolesAndGamepads}
-        description=""
-      />
+  
 
       {/* Desktop Banner -  Delivery */}
       <div className="hidden md:block">

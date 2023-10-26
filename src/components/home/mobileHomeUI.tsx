@@ -3,13 +3,8 @@ import { BannerSection } from "./bannerSection";
 import { ProductListSection } from "./productListSection";
 import Image from "next/image";
 import ProductList from "./productList";
-import CategoryList from "./categoryList";
 import { BANNER_LINK } from "@/constants/bannerLink";
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
-import { Button } from "@nextui-org/react";
 
-import { TbCategory2 } from "react-icons/tb";
-import { Separator } from "../ui/separator";
 import ProductSearch from "../common/productSearch";
 
 export default async function MobileUI() {
@@ -33,27 +28,33 @@ export default async function MobileUI() {
   const mousesAndKeyboards = await fetchProductsByCategories([
     "keyboards",
     "mouses",
-  ]);
-  const speakersAndHeadphones = await fetchProductsByCategories([
-    "headphones",
-    "speakers",
-  ]);
-  const monitorsAndGpu = await fetchProductsByCategories(["gpu", "monitors"]);
-
-  const caseAndMousepads = await fetchProductsByCategories([
-    "cases",
-    "mousepads",
+    "headsets",
   ]);
 
-  const consolesAndGamepads = await fetchProductsByCategories([
-    "consoles",
-    "gamepads",
+  const mouses = await fetchProductsByCategories([
+    "mouses",
   ]);
 
-  const cpuAndMotherboard = await fetchProductsByCategories([
+  const headsets = await fetchProductsByCategories([
+    "headsets",
+  ]);
+
+  const keyboards = await fetchProductsByCategories([
+    "keyboards",
+  ]);
+
+  const cpu = await fetchProductsByCategories([
     "cpu",
+  ]);
+
+  const gpu = await fetchProductsByCategories([
+    "gpu",
+  ]);
+
+  const motherboards = await fetchProductsByCategories([
     "motherboards",
   ]);
+
 
   async function fetchProductsByDiscount() {
     return await prismaClient.product.findMany({
@@ -73,7 +74,7 @@ export default async function MobileUI() {
   return (
     <main>
       <div className="md:hidden">
-        <div className="mt-5 flex w-full gap-2">
+        <div className="flex w-full gap-2">
           <Image
             src={BANNER_LINK.banner_cover_mobile}
             alt="O melhor do mundo tech, ofertas imperdíveis!"
@@ -96,46 +97,40 @@ export default async function MobileUI() {
       </div>
 
       <BannerSection
-        imageSrc={BANNER_LINK.banner_perifericos}
-        altText="Até 25% de desconto em perifericos"
+        imageSrc={BANNER_LINK.banner_mouses}
+        altText="Até 15% de desconto em mouses"
       />
-      <ProductListSection title="Periféricos" products={mousesAndKeyboards} />
+      <ProductListSection title="Mouses" products={mouses} />
 
       <BannerSection
-        imageSrc={BANNER_LINK.banner_video}
-        altText="Até 30% de desconto em dispositivos de vídeo"
+        imageSrc={BANNER_LINK.banner_keyboards}
+        altText="Até 25% de desconto em teclados"
       />
-      <ProductListSection
-        title="Dispositivos de Vídeo"
-        products={monitorsAndGpu}
-      />
+      <ProductListSection title="Teclados" products={keyboards} />
 
       <BannerSection
-        imageSrc={BANNER_LINK.banner_desktop}
-        altText="Até 20% de desconto em desktop"
+        imageSrc={BANNER_LINK.banner_headphones}
+        altText="Até 20% de desconto em fones"
       />
-      <ProductListSection title="Desktop" products={caseAndMousepads} />
+      <ProductListSection title="Headsets" products={headsets} />
 
       <BannerSection
-        imageSrc={BANNER_LINK.banner_audio}
-        altText="Até 20% de desconto em dispositivos áudio"
+        imageSrc={BANNER_LINK.banner_gpu}
+        altText="Até 30% de desconto em placas de vídeo"
       />
-      <ProductListSection
-        title="Dispositivos de Áudio"
-        products={speakersAndHeadphones}
-      />
+      <ProductListSection title="Placas de Vídeo" products={gpu} />
 
       <BannerSection
-        imageSrc={BANNER_LINK.banner_hardware}
-        altText="Até 35% de desconto em hardware"
+        imageSrc={BANNER_LINK.banner_cpu}
+        altText="Até 35% de desconto em processadores"
       />
-      <ProductListSection title="Hardware" products={cpuAndMotherboard} />
+      <ProductListSection title="Processadores" products={cpu} />
 
       <BannerSection
-        imageSrc={BANNER_LINK.banner_games}
-        altText="Até 20% de desconto em jogos"
+        imageSrc={BANNER_LINK.banner_motherboard}
+        altText="Até 30% de desconto em placas mãe"
       />
-      <ProductListSection title="Video Games" products={consolesAndGamepads} />
+      <ProductListSection title="Placas Mãe" products={motherboards} />
 
       <div className="md:hidden">
         <div className="mt-5 flex w-full gap-2">

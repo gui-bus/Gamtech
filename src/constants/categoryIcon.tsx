@@ -16,7 +16,7 @@ import { LiaGamepadSolid } from "react-icons/lia";
 export const CATEGORY_ICON = {
   keyboards: <BsKeyboard size={20} />,
   monitors: <FiMonitor size={20} />,
-  headphones: <BsHeadset size={20} />,
+  headsets: <BsHeadset size={20} />,
   mousepads: <SquareIcon size={20} />,
   speakers: <BsSpeaker size={20} />,
   mouses: <BsMouse3 size={20} />,
