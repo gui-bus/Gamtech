@@ -9,12 +9,19 @@ import { AiOutlineSafety } from "react-icons/ai";
 import { createCheckout } from "@/actions/checkout";
 import { loadStripe } from "@stripe/stripe-js";
 import { useSession } from "next-auth/react";
+import { createOrder } from "@/actions/order";
 
 const Cart = () => {
   const { products, subtotal, total, totalDiscount } = useContext(CartContext);
   const { status, data } = useSession();
 
   const handleFinishPurchaseClick = async () => {
+    if(!data?.user) {
+      return
+    }
+
+    await createOrder(products, (data?.user as any).id)
+
     const checkout = await createCheckout(products);
 
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
@@ -106,7 +113,7 @@ const Cart = () => {
                 variant="shadow"
                 color="primary"
                 radius="sm"
-                className="font-bold uppercase w-full"
+                className="w-full font-bold uppercase"
                 endContent={<AiOutlineSafety size={24} />}
                 onClick={handleFinishPurchaseClick}
               >
@@ -131,7 +138,7 @@ const Cart = () => {
                     variant="shadow"
                     color="primary"
                     radius="sm"
-                    className="font-bold uppercase w-full"
+                    className="w-full font-bold uppercase"
                     endContent={<AiOutlineSafety size={24} />}
                     isDisabled
                   >
