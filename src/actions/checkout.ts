@@ -12,7 +12,7 @@ export const createCheckout = async (products: CartProduct[], orderId: string) =
   const checkout = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "payment",
-    success_url: "https://gamtech.vercel.app/",
+    success_url: "https://gamtech.vercel.app/orders",
     cancel_url: "https://gamtech.vercel.app/",
     metadata: {
       orderId,
