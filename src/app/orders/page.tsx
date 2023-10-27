@@ -35,7 +35,6 @@ const OrderPage = () => {
     const json = await response.json();
 
     setOrders(json);
-    console.log(json);
   };
 
   useEffect(() => {

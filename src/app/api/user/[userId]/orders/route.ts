@@ -21,6 +21,5 @@ export async function GET(
     },
   });
 
-  console.log(orders);
   return new NextResponse(JSON.stringify(orders), { status: 200 });
 }
