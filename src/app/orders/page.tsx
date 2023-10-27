@@ -2,7 +2,6 @@
 import BackButton from "@/components/common/backButton";
 import OrderItem from "@/components/orders/orderItem";
 import { Button, Chip, Link } from "@nextui-org/react";
-import { PiPackageBold } from "react-icons/pi";
 import React, { useEffect, useState } from "react";
 import { TbCategory2 } from "react-icons/tb";
 import { useSession } from "next-auth/react";
@@ -63,7 +62,7 @@ const OrderPage = () => {
       {orders.length > 0 ? (
         <div className="flex flex-col gap-1 py-5">
           {orders.map((order) => (
-            <OrderItem key={order.id} order={order} />
+            <OrderItem key={order.id} order={order} fetchOrders={fetchOrders}/>
           ))}
         </div>
       ) : (
@@ -77,7 +76,7 @@ const OrderPage = () => {
             sua lista!
           </p>
 
-          <div className="flex flex-col items-center justify-center gap-4 md:flex-row pb-16 pt-4">
+          <div className="flex flex-col items-center justify-center gap-4 pb-16 pt-4 md:flex-row">
             <Link href="/categories" className="mx-auto w-full max-w-xl">
               <Button
                 endContent={<TbCategory2 size={20} />}
