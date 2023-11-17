@@ -8,7 +8,7 @@ export const BANNER_LINK = {
   banner_gpu:
     "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-gpu.webp?alt=media&token=84ce143b-46cf-4274-acef-95d6f1be053b&_gl=1*7gk5wb*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjQxMC41My4wLjA.",
   banner_headphones:
-    "https://zxsxlbutylcszksglhqh.supabase.co/storage/v1/object/sign/Gamtech/banners/banner-headphones.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW10ZWNoL2Jhbm5lcnMvYmFubmVyLWhlYWRwaG9uZXMucG5nIiwiaWF0IjoxNjk3OTEzMTExLCJleHAiOjI1NjE4MjY3MTF9.mgT3xKYbJOBUHjRLEGLfypSApWfMHBo-TVhPn0kBt2M&t=2023-10-21T18%3A31%3A07.294Z",
+    "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-headphones.webp?alt=media&token=63cb369b-aee4-4240-a9b6-cce65776512e",
   banner_keyboards:
     "https://firebasestorage.googleapis.com/v0/b/gamtechimages001.appspot.com/o/banners%2Fbanner-keyboards.webp?alt=media&token=98f76c7f-232a-46e1-bebe-670d700ac236&_gl=1*1g23p4u*_ga*MTM3MDI1ODQ5My4xNjk4MjY2NzA3*_ga_CW55HF8NVT*MTY5ODMzNTcxMy4zLjEuMTY5ODM0MjQzOS4yNC4wLjA.",
   banner_monitors:
